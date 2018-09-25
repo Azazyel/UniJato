@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <title>Login</title>
+        
+    </h:head>
+    
+    <h:body>
+    		
+    		<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+	 
+	<p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+	    <p:graphicImage name="/images/loading.gif" />
+	</p:dialog>
+	<div style="position: absolute; top: 100px; left: 80%" >
+		<p:growl autoUpdate="true" />
+	</div>
+	<h2 class="align-center">\('-' Login '-')/</h2>
+	<div class="ui-g-12">
+		<p:panel styleClass="card no-border" toggleable="true"
+			toggleSpeed="300">
+
+			<h:form id="formDados">
+				
+				<div style="text-align: left;"
+					class="ui-fluid #{layoutMB.flat ? 'ui-flat':''} ">
+					<p:panelGrid id="pgDados" columns="2"
+						columnClasses="ui-grid-col-6, ui-grid-col-6 " layout="grid"
+						styleClass="ui-fluid card">
+
+						
+						
+						<h:panelGroup>
+							<p:outputLabel for="itNome" value="Nome:" />
+							<p:inputText id="itNome" value="#{loginController.entity.nome}" required="true">
+								<p:focus for="itNome" />								
+							</p:inputText>
+						</h:panelGroup>
+
+						<h:panelGroup>
+							<p:outputLabel value="Senha:" />
+							<p:inputMask id="itSenha" value="#{loginController.entity.senha}" />
+						</h:panelGroup>
+						<p:spacer />
+					</p:panelGrid>
+
+				</div>
+
+				<p:spacer />
+
+				<p:panelGrid columns="4" style="text-align: center;"
+					columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2"
+					layout="grid" styleClass="ui-fluid  ">
+
+					<p:commandButton value="Incluir" styleClass="btn-primary btn-block"
+						disabled="#{loginController.entity.id != null}"
+						actionListener="#{loginController.incluir}"
+						update="@form formDataTable" process="@this pgDados" />
+
+					<p:commandButton value="Alterar" styleClass="btn-primary btn-block"
+						disabled="#{loginController.entity.id == null}"
+						actionListener="#{loginController.alterar}"
+						update="@form formDataTable" process="@this pgDados" />
+
+					<p:commandButton value="Remover" styleClass="btn-primary btn-block"
+						disabled="#{loginController.entity.id == null}"
+						actionListener="#{loginController.remover}"
+						update="@form formDataTable" process="@this pgDados" />
+
+					<p:commandButton value="Limpar" styleClass="btn-primary btn-block"
+						actionListener="#{loginController.limpar}"
+						update="@form formDataTable" process="@this" />
+				</p:panelGrid>
+
+			</h:form>
+
+		</p:panel>
+		<p:spacer />
+
+		<p:panel styleClass="card no-border" toggleable="true"
+			toggleSpeed="300">
+			<h:form id="formDataTable">
+				<p:dataTable styleClass="box-primary" var="login"
+					value="#{loginController.listaLogin}">
+					<f:facet name="header">
+						<h:outputText value="Longins Cadastradas" />
+					</f:facet>
+					<p:column headerText="Id">
+						<h:outputText value="#{login.id}" />
+					</p:column>
+
+					<p:column headerText="Nome">
+						<h:commandLink value="#{login.nome}">
+							<f:ajax render="formDados" execute="@this" />
+							<f:setPropertyActionListener value="#{login}"
+								target="#{loginController.entity}" />
+						</h:commandLink>
+					</p:column>
+
+					<p:column headerText="Senha">
+						<h:outputText value="#{login.senha}" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</p:panel>
+	</div>
+    		
+    </h:body>
+    
+</html>

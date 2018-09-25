@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" 
+	xmlns="http://xmlns.jcp.org/xml/ns/persistence" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence 
+	http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	
+	<persistence-unit name="unijato">
+		<class>br.unitins.unijato.model.DefaultEntity</class>
+		<class>br.unitins.unijato.model.Login</class>
+		
+		<properties>
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:postgresql://localhost:5433/lavajatodb?useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8" />
+				
+			<property name="javax.persistence.jdbc.driver"
+				value="org.postgresql.Driver" />
+				
+			<property name="javax.persistence.jdbc.user"
+				value="topicos2" />
+				
+			<property name="javax.persistence.jdbc.password"
+				value="123456" />
+
+			<!-- <property name="eclipselink.ddl-generation"
+				value="drop-and-create-tables" /> -->
+			<property name="eclipselink.ddl-generation" value="create-or-extend-tables" 
+				/>
+
+			<property name="eclipselink.logging.level" value="ALL" />
+		</properties>
+		
+	</persistence-unit>
+</persistence>
