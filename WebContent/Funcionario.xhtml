@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-br"
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui">
+    
+    <h:head>
+        <title>Login</title>
+        
+    </h:head>
+    
+    <h:body>
+    		
+    		<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
+	 
+	<p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
+	    <p:graphicImage name="/images/loading.gif" />
+	</p:dialog>
+	<div style="position: absolute; top: 100px; left: 80%" >
+		<p:growl autoUpdate="true" />
+	</div>
+	<h2 class="align-center">\('-' Cadastro de Funcionarios '-')/</h2>
+	<div class="ui-g-12">
+		<p:panel styleClass="card no-border" toggleable="true"
+			toggleSpeed="300">
+
+			<h:form id="formDados">
+				
+				<div style="text-align: left;"
+					class="ui-fluid #{layoutMB.flat ? 'ui-flat':''} ">
+					<p:panelGrid id="pgDados" columns="3"
+						columnClasses="ui-grid-col-4, ui-grid-col-4, ui-grid-col-4 " layout="grid"
+						styleClass="ui-fluid card">
+
+						<h:panelGroup>
+							<p:outputLabel for="itCpf" value="CPF: " />
+							<p:inputText id="itCpf" value="#{funcionarioController.entity.cpf}" required="true">
+								<p:focus for="itCpf" />								
+							</p:inputText>
+						</h:panelGroup>
+						
+						<h:panelGroup>
+							<p:outputLabel for="itRg" value="RG: " />
+							<p:inputText id="itRg" value="#{funcionarioController.entity.rg}" required="true">
+								<p:focus for="itRg" />								
+							</p:inputText>
+						</h:panelGroup>
+						
+						<h:panelGroup>
+							<p:outputLabel for="itNome" value="Nome: " />
+							<p:inputText id="itNome" value="#{funcionarioController.entity.nome}" required="true">
+								<p:focus for="itNome" />								
+							</p:inputText>
+						</h:panelGroup>
+						
+						<h:panelGroup>
+							<p:outputLabel for="itEmail" value="Email: " />
+							<p:inputText id="itEmail" value="#{funcionarioController.entity.email}" required="true">
+								<p:focus for="itEmail" />								
+							</p:inputText>
+						</h:panelGroup>
+						
+						<h:panelGroup>
+							<p:outputLabel value="Senha: " />
+							<p:inputMask id="itSenha" value="#{funcionarioController.entity.senha}" />
+						</h:panelGroup>
+						
+						<h:panelGroup>
+							<p:outputLabel for="itCargo" value="Cargo: " />
+							<p:inputText id="itCargo" value="#{funcionarioController.entity.cargo}" required="true">
+								<p:focus for="itCargo" />								
+							</p:inputText>
+						</h:panelGroup>
+						
+						<p:spacer />
+					</p:panelGrid>
+					
+				</div>
+
+				<p:spacer />
+
+				<p:panelGrid columns="4" style="text-align: center;"
+					columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2"
+					layout="grid" styleClass="ui-fluid  ">
+
+					<p:commandButton value="Incluir" styleClass="btn-primary btn-block"
+						disabled="#{FuncionarioController.entity.id != null}"
+						actionListener="#{funcionarioController.incluir}"
+						update="@form formDataTable" process="@this pgDados" />
+
+					<p:commandButton value="Alterar" styleClass="btn-primary btn-block"
+						disabled="#{funcionarioController.entity.id == null}"
+						actionListener="#{funcionarioController.alterar}"
+						update="@form formDataTable" process="@this pgDados" />
+
+					<p:commandButton value="Remover" styleClass="btn-primary btn-block"
+						disabled="#{FuncionarioController.entity.id == null}"
+						actionListener="#{FuncionarioController.remover}"
+						update="@form formDataTable" process="@this pgDados" />
+
+					<p:commandButton value="Limpar" styleClass="btn-primary btn-block"
+						actionListener="#{FuncionarioController.limpar}"
+						update="@form formDataTable" process="@this" />
+				</p:panelGrid>
+
+			</h:form>
+
+		</p:panel>
+		<p:spacer />
+
+		<p:panel styleClass="card no-border" toggleable="true"
+			toggleSpeed="300">
+			<h:form id="formDataTable">
+				<p:dataTable styleClass="box-primary" var="funcionario"
+					value="#{funcionarioController.listaFuncionario}">
+					<f:facet name="header">
+						<h:outputText value="Funcionarios Cadastradas" />
+					</f:facet>
+					<p:column headerText="Id">
+						<h:outputText value="#{funcionario.id}" />
+					</p:column>
+					
+					<p:column headerText="Cpf">
+						<h:outputText value="#{funcionario.cpf}" />
+					</p:column>
+					
+					<p:column headerText="Rg">
+						<h:outputText value="#{funcionario.rg}" />
+					</p:column>
+					
+					<p:column headerText="Nome">
+						<h:commandLink value="#{funcionario.nome}">
+							<f:ajax render="formDados" execute="@this" />
+							<f:setPropertyActionListener value="#{funcionario}"
+								target="#{loginController.entity}" />
+						</h:commandLink>
+					</p:column>
+					
+					<p:column headerText="Email">
+						<h:outputText value="#{funcionario.email}" />
+					</p:column>
+					
+					<p:column headerText="Senha">
+						<h:outputText value="#{funcionario.senha}" />
+					</p:column>
+					
+					<p:column headerText="Cargo">
+						<h:outputText value="#{funcionario.cargo}" />
+					</p:column>
+					
+				</p:dataTable>
+			</h:form>
+		</p:panel>
+	</div>
+    		
+    </h:body>
+    
+</html>

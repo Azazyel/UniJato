@@ -7,7 +7,7 @@
 	
 	<persistence-unit name="unijato">
 		<class>br.unitins.unijato.model.DefaultEntity</class>
-		<class>br.unitins.unijato.model.Login</class>
+		<class>br.unitins.unijato.model.Funcionario</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url"
