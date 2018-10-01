@@ -1,9 +1,7 @@
 package br.unitins.unijato.controller;
 
 import java.util.List;
-
 import javax.inject.Named;
-
 import br.unitins.unijato.model.Funcionario;
 import br.unitins.unijato.repository.FuncionarioRepository;
 

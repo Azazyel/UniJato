@@ -6,7 +6,7 @@
     xmlns:p="http://primefaces.org/ui">
     
     <h:head>
-        <title>Funcionarios</title>
+        <title>Serviços</title>
         
     </h:head>
     
@@ -20,7 +20,7 @@
 	<div style="position: absolute; top: 100px; left: 80%" >
 		<p:growl autoUpdate="true" />
 	</div>
-	<h2 class="align-center">\('-' Cadastro de Funcionarios '-')/</h2>
+	<h2 class="align-center">\("-" Cadastro de Serviços "-")/</h2>
 	<div class="ui-g-12">
 		<p:panel styleClass="card no-border" toggleable="true"
 			toggleSpeed="300">
@@ -34,43 +34,22 @@
 						styleClass="ui-fluid card">
 
 						<h:panelGroup>
-							<p:outputLabel for="itCpf" value="CPF: " />
-							<p:inputText id="itCpf" value="#{funcionarioController.entity.cpf}" required="true">
-								<p:focus for="itCpf" />								
-							</p:inputText>
-						</h:panelGroup>
-						
-						<h:panelGroup>
-							<p:outputLabel for="itRg" value="RG: " />
-							<p:inputText id="itRg" value="#{funcionarioController.entity.rg}" required="true">
-								<p:focus for="itRg" />								
-							</p:inputText>
-						</h:panelGroup>
-						
-						<h:panelGroup>
 							<p:outputLabel for="itNome" value="Nome: " />
-							<p:inputText id="itNome" value="#{funcionarioController.entity.nome}" required="true">
+							<p:inputText id="itNome" value="#{servicoController.entity.nome}" required="true">
 								<p:focus for="itNome" />								
 							</p:inputText>
 						</h:panelGroup>
 						
 						<h:panelGroup>
-							<p:outputLabel for="itEmail" value="Email: " />
-							<p:inputText id="itEmail" value="#{funcionarioController.entity.email}" required="true">
-								<p:focus for="itEmail" />								
+							<p:outputLabel for="itDescricao" value="Descriçao: " />
+							<p:inputText id="itDescricao" value="#{servicoController.entity.descricao}" required="true">
+								<p:focus for="itDescricao" />								
 							</p:inputText>
 						</h:panelGroup>
 						
 						<h:panelGroup>
-							<p:outputLabel value="Senha: " />
-							<p:inputMask id="itSenha" value="#{funcionarioController.entity.senha}" />
-						</h:panelGroup>
-						
-						<h:panelGroup>
-							<p:outputLabel for="itCargo" value="Cargo: " />
-							<p:inputText id="itCargo" value="#{funcionarioController.entity.cargo}" required="true">
-								<p:focus for="itCargo" />								
-							</p:inputText>
+							<p:outputLabel value="Valor: " />
+							<p:inputNumber id="itValor" value="#{servicoController.entity.valor}" required="true"/>
 						</h:panelGroup>
 						
 						<p:spacer />
@@ -85,22 +64,22 @@
 					layout="grid" styleClass="ui-fluid  ">
 
 					<p:commandButton value="Incluir" styleClass="btn-primary btn-block"
-						disabled="#{funcionarioController.entity.id != null}"
-						actionListener="#{funcionarioController.incluir}"
+						disabled="#{servicoController.entity.id != null}"
+						actionListener="#{servicoController.incluir}"
 						update="@form formDataTable" process="@this pgDados" />
 
 					<p:commandButton value="Alterar" styleClass="btn-primary btn-block"
-						disabled="#{funcionarioController.entity.id == null}"
-						actionListener="#{funcionarioController.alterar}"
+						disabled="#{servicoController.entity.id == null}"
+						actionListener="#{servicoController.alterar}"
 						update="@form formDataTable" process="@this pgDados" />
 
 					<p:commandButton value="Remover" styleClass="btn-primary btn-block"
-						disabled="#{funcionarioController.entity.id == null}"
-						actionListener="#{funcionarioController.remover}"
+						disabled="#{servicoController.entity.id == null}"
+						actionListener="#{servicoController.remover}"
 						update="@form formDataTable" process="@this pgDados" />
 
 					<p:commandButton value="Limpar" styleClass="btn-primary btn-block"
-						actionListener="#{funcionarioController.limpar}"
+						actionListener="#{servicoController.limpar}"
 						update="@form formDataTable" process="@this" />
 				</p:panelGrid>
 
@@ -112,41 +91,29 @@
 		<p:panel styleClass="card no-border" toggleable="true"
 			toggleSpeed="300">
 			<h:form id="formDataTable">
-				<p:dataTable styleClass="box-primary" var="funcionario"
-					value="#{funcionarioController.listaFuncionario}">
+				<p:dataTable styleClass="box-primary" var="servico"
+					value="#{servicoController.listaServico}">
 					<f:facet name="header">
-						<h:outputText value="Funcionarios Cadastradas" />
+						<h:outputText value="Servicos Cadastrados" />
 					</f:facet>
 					<p:column headerText="Id">
-						<h:outputText value="#{funcionario.id}" />
-					</p:column>
-					
-					<p:column headerText="Cpf">
-						<h:outputText value="#{funcionario.cpf}" />
-					</p:column>
-					
-					<p:column headerText="Rg">
-						<h:outputText value="#{funcionario.rg}" />
+						<h:outputText value="#{servico.id}" />
 					</p:column>
 					
 					<p:column headerText="Nome">
-						<h:commandLink value="#{funcionario.nome}">
+						<h:commandLink value="#{servico.nome}">
 							<f:ajax render="formDados" execute="@this" />
-							<f:setPropertyActionListener value="#{funcionario}"
-								target="#{funcionarioController.entity}" />
+							<f:setPropertyActionListener value="#{servico}"
+								target="#{servicoController.entity}" />
 						</h:commandLink>
 					</p:column>
 					
-					<p:column headerText="Email">
-						<h:outputText value="#{funcionario.email}" />
+					<p:column headerText="Descrição">
+						<h:outputText value="#{servico.descricao}" />
 					</p:column>
 					
-					<p:column headerText="Senha">
-						<h:outputText value="#{funcionario.senha}" />
-					</p:column>
-					
-					<p:column headerText="Cargo">
-						<h:outputText value="#{funcionario.cargo}" />
+					<p:column headerText="Valor">
+						<h:outputText value="#{servico.valor}" />
 					</p:column>
 					
 				</p:dataTable>
