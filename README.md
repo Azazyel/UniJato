@@ -38,7 +38,7 @@ Preparação do ambiente de produção:
 Execução...
 Configure o servidor na IDE, após isso o servidor poderá ser iniciado.
 Acesse o o sistema ultilizando a url da configuração do servidor
-Por padrão é (https://localhost:8080/UniJato/Login.xhtml)
+Por padrão é (http://localhost:8080/UniJato/Login.xhtml)
 
 ### Entrando no Sistema
 Por padrão o usuário de acesso é o administrador, com ele será possível fazer o gerenciamento no sistema
