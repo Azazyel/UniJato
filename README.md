@@ -1,6 +1,9 @@
 # Unijato
 Trabalho A1 e A2 da matéria de TÓPICOS EM PROGRAMAÇÃO II - Professor: Jânio E. Teixeira Júnior 
 
+[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badges/)
+[![MIT Licence](https://badges.frapsoft.com/os/mit/mit.svg?v=103)](https://opensource.org/licenses/mit-license.php)
+
 > Ao identificar as dificuldades de gerenciamento de entrada de veículos, foi negociado com uma empresa de palmas a criação de um sistema para o controle de Lava-Jato.
 > UniJato é um sistema web para controle de lava-jato/ lava-rápido, rápido e fácil, sendo possível acessá-lo de qualquer dispositivo que tenha acesso à internet e possua um navegador. 
 
