@@ -1,23 +1,21 @@
 package br.unitins.unijato.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Transient;
 
 @Entity
 public class Servico extends DefaultEntity<Servico>{
 	
-	private static final long serialVersionUID = -5367935915343728731L;
+	private static final long serialVersionUID = 428995113855217328L;
 	
-	@Transient
 	private String nome;
 	private String descricao;
-	private double valor;
+	private String valor;
 	
 	public Servico() {
 		//Default
 	}
 	
-	public Servico(String nome, String descricao, double valor) {
+	public Servico(String nome, String descricao, String valor) {
 		super();
 		this.nome = nome;
 		this.descricao = descricao;
@@ -40,11 +38,11 @@ public class Servico extends DefaultEntity<Servico>{
 		this.descricao = descricao;
 	}
 
-	public double getValor() {
+	public String getValor() {
 		return valor;
 	}
 
-	public void setValor(double valor) {
+	public void setValor(String valor) {
 		this.valor = valor;
 	}
 	

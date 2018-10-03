@@ -1,12 +1,13 @@
 package br.unitins.unijato.controller;
 
 import java.util.List;
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import br.unitins.unijato.model.Cliente;
 import br.unitins.unijato.repository.ClienteRepository;
 
 @Named
-@javax.faces.view.ViewScoped
+@ViewScoped
 public class ClienteController extends Controller<Cliente>{
 	
 	private static final long serialVersionUID = -7505803932181465866L;

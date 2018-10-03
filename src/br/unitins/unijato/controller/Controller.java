@@ -2,6 +2,7 @@ package br.unitins.unijato.controller;
 
 import java.io.Serializable;
 import javax.persistence.EntityManager;
+import br.unitins.unijato.application.Util;
 import br.unitins.unijato.factory.JPAFactory;
 import br.unitins.unijato.model.DefaultEntity;
 import br.unitins.unijato.repository.Repository;
@@ -34,7 +35,7 @@ private EntityManager em = null;
 		T result = repository.save(getEntity());
 		getEntityManager().getTransaction().commit();
 		limpar();
-		System.out.println("Incluir");
+		Util.addInfoMessage("Inclusão realizada com sucesso!");
 		return result;
 	}
 	
@@ -44,7 +45,7 @@ private EntityManager em = null;
 		T result = repository.save(getEntity());
 		getEntityManager().getTransaction().commit();
 		limpar();
-		System.out.println("Alterar");
+		Util.addInfoMessage("Alteração realizada com sucesso!");
 		return result;
 	}
 	
@@ -54,7 +55,7 @@ private EntityManager em = null;
 		repository.remove(getEntity());
 		getEntityManager().getTransaction().commit();
 		limpar();
-		System.out.println("Remover");
+		Util.addInfoMessage("Remoção realizada com sucesso!");
 	}
 	
 }

@@ -61,11 +61,6 @@
 							</p:inputText>
 						</h:panelGroup>
 						
-						<h:panelGroup>
-							<p:outputLabel value="Vip: " />
-							<p:inputNumber id="itVip" value="#{clienteController.entity.vip}" />
-						</h:panelGroup>
-						
 						<p:spacer />
 					</p:panelGrid>
 					
@@ -132,10 +127,6 @@
 					
 					<p:column headerText="Email">
 						<h:outputText value="#{cliente.email}" />
-					</p:column>
-					
-					<p:column headerText="Vip">
-						<h:outputText value="#{cliente.vip}" />
 					</p:column>
 					
 				</p:dataTable>

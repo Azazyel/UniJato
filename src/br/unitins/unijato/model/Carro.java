@@ -1,14 +1,12 @@
 package br.unitins.unijato.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Transient;
 
 @Entity
 public class Carro extends DefaultEntity<Carro>{
 	
 	private static final long serialVersionUID = 5020670419551155114L;
 	
-	@Transient
 	private String placa;
 	private String modelo;
 	

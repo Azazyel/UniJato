@@ -13,7 +13,7 @@ public class ServicoRepository extends Repository<Servico>{
 	
 	@SuppressWarnings("unchecked")
 	public List<Servico> getServico() {
-		List<Servico> Lista = getEntityManager().createQuery("Select p From Funcionario p Order by p.id").getResultList();
+		List<Servico> Lista = getEntityManager().createQuery("Select p From Servico p Order by p.id").getResultList();
 		if (Lista == null)
 			Lista = new ArrayList<Servico>();
 		return Lista;

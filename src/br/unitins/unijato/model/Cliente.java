@@ -1,33 +1,29 @@
 package br.unitins.unijato.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Transient;
 
 @Entity
 public class Cliente extends DefaultEntity<Cliente>{
 	
 	private static final long serialVersionUID = -8507170722133870368L;
 	
-	@Transient
 	private String cpf;
 	private String rg;
 	private String nome;
 	private String email;
 	private String senha;
-	private int vip;
 	
 	public Cliente() {
 		//Default
 	}
 	
-	public Cliente(String cpf, String rg, String nome, String email, String senha, int vip) {
+	public Cliente(String cpf, String rg, String nome, String email, String senha) {
 		super();
 		this.cpf = cpf;
 		this.rg = rg;
 		this.nome = nome;
 		this.email = email;
 		this.senha = senha;
-		this.vip = vip;
 	}
 
 	public String getCpf() {
@@ -68,14 +64,6 @@ public class Cliente extends DefaultEntity<Cliente>{
 
 	public void setSenha(String senha) {
 		this.senha = senha;
-	}
-
-	public int getVip() {
-		return vip;
-	}
-
-	public void setVip(int vip) {
-		this.vip = vip;
 	}
 	
 }

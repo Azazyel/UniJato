@@ -1,12 +1,14 @@
 package br.unitins.unijato.controller;
 
 import java.util.List;
+
+import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import br.unitins.unijato.model.Carro;
 import br.unitins.unijato.repository.CarroRepository;
 
 @Named
-@javax.faces.view.ViewScoped
+@ViewScoped
 public class CarroController extends Controller<Carro>{
 	
 	private static final long serialVersionUID = 2285090812059600632L;

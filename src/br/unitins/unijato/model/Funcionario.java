@@ -1,14 +1,12 @@
 package br.unitins.unijato.model;
 
 import javax.persistence.Entity;
-import javax.persistence.Transient;
 
 @Entity
 public class Funcionario extends DefaultEntity<Funcionario>{
 	
 	private static final long serialVersionUID = 2313966160767732895L;
 	
-	@Transient
 	private String cpf;
 	private String rg;
 	private String nome;

@@ -1,7 +1,6 @@
 package br.unitins.unijato.repository;
 
 import javax.persistence.EntityManager;
-
 import br.unitins.unijato.model.DefaultEntity;
 
 public class Repository<T extends DefaultEntity<T>> {
