@@ -22,7 +22,7 @@ Para elaboração do sistema foi utilizado:
 
 * [JSF] - Java Server Faces, v 3.0
 * [JPA] - Java Percistence API
-* [Postgree SQL] - Banco de Dados Gratito.
+* [Postgree SQL] - Banco de Dados Gratuito.
 * [Twitter Bootstrap] - great UI boilerplate for modern web apps
 * [PrimeFaces] - Biblioteca de Componentes de Interface
 * [Eclipse Photon] - IDE para Java EE Developers
