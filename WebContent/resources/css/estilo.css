@@ -1,0 +1,52 @@
+.ui-layout-unit{
+	border: none !important; 
+}
+
+.ui-layout-unit-content{
+	margin-top: -12px;
+	padding: 0 0 0 0;
+}
+
+
+.topnav {
+  overflow: hidden;
+  background-color: #087E8B;
+}
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #0080ff;
+  color: black;
+}
+
+
+.menuV{
+    margin: 0;
+    padding: 0;
+    width: 150px;
+}
+
+.menuV li{
+    position: absolute;
+    left: 149px;
+    top: 0;
+    display: none;
+    }
+    
+.menuV li a {
+    display: block;
+    text-decoration: none;
+    color: #E2144A;
+    background: #fff;
+    padding: 5px;
+    border: 1px solid #ccc; 
+}

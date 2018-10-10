@@ -1,16 +1,18 @@
 <!DOCTYPE html>
-<html lang="pt-br"
-    xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:f="http://xmlns.jcp.org/jsf/core"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:p="http://primefaces.org/ui">
-    
-    <h:head>
-        <title>Clientes</title>
-        
-    </h:head>
-    
-    <h:body>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<title>UniJato</title>
+
+</h:head>
+
+<h:body>
+	<ui:composition template="/template.xhtml">
+		<ui:define name="conteudo">
     		
     		<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
 	 
@@ -20,7 +22,7 @@
 	<div style="position: absolute; top: 100px; left: 80%" >
 		<p:growl autoUpdate="true" />
 	</div>
-	<h2 class="align-center">\(*-* Cadastro de Clientes *-*)/</h2>
+	<h2 class="align-center">Cadastrar Cliente</h2>
 	<div class="ui-g-12">
 		<p:panel styleClass="card no-border" toggleable="true"
 			toggleSpeed="300">
@@ -133,6 +135,9 @@
 			</h:form>
 		</p:panel>
 	</div>
+	
+	</ui:define>
+	</ui:composition>
     		
     </h:body>
     

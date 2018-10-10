@@ -14,7 +14,7 @@
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:postgresql://localhost:5433/lavajatodb?useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8" />
+				value="jdbc:postgresql://localhost:5432/lavajatodb?useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8" />
 				
 			<property name="javax.persistence.jdbc.driver"
 				value="org.postgresql.Driver" />
