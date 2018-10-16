@@ -13,6 +13,7 @@
   background-color: #087E8B;
 }
 
+
 .topnav a {
   float: left;
   display: block;
@@ -20,33 +21,33 @@
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
+  font-size: 18pt;
 }
 
 .topnav a:hover {
-  background-color: #0080ff;
-  color: black;
+  color: #4e4e4e;
 }
 
 
 .menuV{
     margin: 0;
     padding: 0;
-    width: 150px;
+    list-style: none;
+    width: 200px;
 }
 
-.menuV li{
+.submenu li {
     position: absolute;
-    left: 149px;
     top: 0;
     display: none;
-    }
+}
     
 .menuV li a {
     display: block;
     text-decoration: none;
-    color: #E2144A;
-    background: #fff;
-    padding: 5px;
-    border: 1px solid #ccc; 
+    color: #ffffff;
+    background-color: #496f76;
+    padding: 15px;
+    size: 14pt;
+    border-bottom: solid 1px #fff;
 }

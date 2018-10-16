@@ -7,50 +7,127 @@
 
 <h:head>
 	<title>Topicos em Progamação</title>
+	<!-- Estilo adicional -->
 	<h:outputStylesheet library="css" name="estilo.css" />
 
+	<!-- Bootstrap core CSS-->
+	<link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet"></link>
+
+	<!-- Fonte de Icones-->
+	<link href="resources/fontawesome-free/css/all.min.css"
+		rel="stylesheet" type="text/css"></link>
+
+	<!-- CSS do tema -->
+	<link href="resources/css/sb-admin.css" rel="stylesheet"></link>
 </h:head>
 
 <h:body>
 
 	<p:layout fullPage="true">
 
-		<p:layoutUnit position="north">
-			<ui:insert name="cabecalho">
-				<div class="topnav" id="myTopnav">
-					<a href="unijato.xhtml" class="">UniJato</a>
+		<!-- navbar -->
+		<nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+
+			<a class="navbar-brand mr-1" href="unijato.xhtml">UniJato</a>
+
+			<button class="btn btn-link btn-sm text-white order-1 order-sm-0"
+				id="sidebarToggle" href="#">
+				<i class="fas fa-bars"></i>
+			</button>
+
+			<!-- Div para dar espaço -->
+			<div
+				class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0"></div>
+
+			<!-- Navbar -->
+			<ul class="navbar-nav ml-auto ml-md-0">
+				<li class="nav-item dropdown no-arrow mx-1"><a
+					class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
+					role="button" data-toggle="dropdown" aria-haspopup="true"
+					aria-expanded="false"> <i class="fas fa-user fa-fw"></i>
+				</a>
+					<div class="dropdown-menu dropdown-menu-right"
+						aria-labelledby="alertsDropdown">
+						<a class="dropdown-item" href="ajustes.php"><i
+							class="fas fa-cog fa-fw"></i> Ajustes da Conta</a>
+						<div class="dropdown-divider"></div>
+						<a class="dropdown-item" href="sair.php"><i
+							class="fas fa-power-off fa-fw"></i> Sair</a>
+					</div></li>
+			</ul>
+
+		</nav>
+		<div id="wrapper">
+
+			<!-- Menu Vertical -->
+			<!-- Sidebar -->
+			<ul class="sidebar navbar-nav">
+				<li class="nav-item active">
+					<a class="nav-link" href="index.php"> 
+						<i class="fas fa-fw fa-inbox"></i>
+						<span>Entrada</span>
+					</a>
+				</li>
+				<li class="nav-item active"><a class="nav-link"
+					href="Funcionário.xhtml"> <i class="fas fa-fw fa-users"></i> <span>Funcionários</span>
+				</a></li>
+
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="pagesDropdown"
+						role="button" data-toggle="dropdown" aria-haspopup="true"
+						aria-expanded="false">
+						<i class="fas fa-fw fa-user"></i>
+						<span>Cliente</span>
+				</a>
+					<div class="dropdown-menu" aria-labelledby="pagesDropdown">
+						<a class="dropdown-item" href="Funcionario.xhtml">
+							<i class="fas fa-fw fa-user-plus"></i>
+							Cadastrar
+						</a>
+						<a class="dropdown-item" href="buscarCliente.xhtml"> 
+							<i class="fas fa-fw fa-edit"></i>
+							Gerenciar
+						</a>
+					</div>
+				</li>
+				<li class="nav-item active"><a class="nav-link"
+					href="Carro.xhtml"> <i class="fas fa-fw fa-car"></i> <span>Carros</span>
+				</a></li>
+
+			</ul>
+			<div id="content-wrapper">
+				<div class="container-fluid">
+					<ui:insert name="conteudo">
+						<h1>Conteudo</h1>
+					</ui:insert>
 				</div>
-			</ui:insert>
-		</p:layoutUnit>
+				<!-- /.container-fluid -->
 
-		<p:layoutUnit position="west">
-		<ul id="nav" class="menuV"> 
-		    <li><a href="#">Home</a></li> 
-		    <li><a href="#">Sobre</a></li> 
-		    <li><a  data-toggle="collapse" href="#drop1" role="button">O que Fazemos?</a> 
-		      <ul class="collapse multi-collapse" id="drop1"> 
-		        <li><a href="#">Web Design</a></li> 
-		        <li><a href="#">Hospedagem</a></li> 
-		        <li><a href="#">SEO</a></li> 
-		        <li><a href="#">Sistemas</a></li> 
-		      </ul> 
-		    </li>
-		 
-		    <li><a href="#">Contato</a></li> 
-		  </ul>
-		</p:layoutUnit>
+				<!-- Sticky Footer -->
+				<footer class="sticky-footer">
+					<div class="container my-auto">
+						<div class="copyright text-center my-auto">
+							<span>UniJato © 2018 / Developed by: Iury Landin e Lucas Lopes</span>
+						</div>
+					</div>
+				</footer>
 
-		<p:layoutUnit position="center">
-			<ui:insert name="conteudo">
-				<h1>Conteudo</h1>
-			</ui:insert>
+			</div>
+			<!-- /.content-wrapper -->
 
-		</p:layoutUnit>
+		</div>
+		<!-- /#wrapper -->
 
-
+		<!-- Scroll to Top Button-->
+		<a class="scroll-to-top rounded" href="#page-top"> <i
+			class="fas fa-angle-up"></i>
+		</a>
 	</p:layout>
 
-
+	<!--  JS bootstrap -->
+	<script src="resources/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- JS do tema -->
+	<script src="resources/js/sb-admin.min.js"></script>
 
 </h:body>
 

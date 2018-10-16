@@ -11,6 +11,7 @@
 		<class>br.unitins.unijato.model.DefaultEntity</class>
 		<class>br.unitins.unijato.model.Funcionario</class>
 		<class>br.unitins.unijato.model.Servico</class>
+		<class>br.unitins.unijato.model.Cidade</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url"

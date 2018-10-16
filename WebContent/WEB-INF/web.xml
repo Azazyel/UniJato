@@ -21,12 +21,13 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
-	<context-param>
-		<param-name>primefaces.THEME</param-name>
-		<param-value>admin</param-value>
-	</context-param>
-	<context-param>
-		<param-name>primefaces.FONT_AWESOME</param-name>
-		<param-value>true</param-value>
-	</context-param>
+
+	<filter>
+		<filter-name>cache</filter-name>
+		<filter-class>br.unitins.unijato.application.CacheFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>cache</filter-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</filter-mapping>
 </web-app>
