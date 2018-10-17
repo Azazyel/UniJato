@@ -21,7 +21,7 @@
 		<servlet-name>Faces Servlet</servlet-name>
 		<url-pattern>*.xhtml</url-pattern>
 	</servlet-mapping>
-
+	
 	<filter>
 		<filter-name>cache</filter-name>
 		<filter-class>br.unitins.unijato.application.CacheFilter</filter-class>

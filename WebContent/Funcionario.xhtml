@@ -24,69 +24,72 @@
 			<div style="position: absolute; top: 100px; left: 80%">
 				<p:growl id="growl" showDetail="true"  />
 			</div>
-			<h2 class="align-center">Cadastrar Funcionário</h2>
 			<div class="ui-g-12">
 				<p:panel styleClass="card no-border" toggleable="true"
-					toggleSpeed="300">
+					toggleSpeed="300" id="pgDados">
 
 					<h:form id="formDados">
-
-						<div style="text-align: left;"
-							class="ui-fluid #{layoutMB.flat ? 'ui-flat':''} ">
-							<p:panelGrid id="pgDados" columns="3"
-								columnClasses="ui-grid-col-4, ui-grid-col-4, ui-grid-col-4 "
-								layout="grid" styleClass="ui-fluid card">
-
-								<h:panelGroup>
-									<p:outputLabel for="itCpf" value="CPF: " />
-									<p:inputText id="itCpf"
+					
+					<div class="card">
+				        <div class="card-header">Funcionários</div>
+				        	<div class="card-body">
+				        	<div class="form-group">
+				              <div class="form-row">
+				                <div class="col-md-3">
+				                  <div class="form-label-group">
+									
+									<p:inputText id="itCpf" styleClass="form-control"
 										value="#{funcionarioController.entity.cpf}" required="true">
 										<p:focus for="itCpf" />
 									</p:inputText>
-								</h:panelGroup>
-
-								<h:panelGroup>
-									<p:outputLabel for="itRg" value="RG: " />
-									<p:inputText id="itRg"
-										value="#{funcionarioController.entity.rg}" required="true">
-										<p:focus for="itRg" />
-									</p:inputText>
-								</h:panelGroup>
-
-								<h:panelGroup>
-									<p:outputLabel for="itNome" value="Nome: " />
-									<p:inputText id="itNome"
+									<p:outputLabel for="itCpf" value="CPF: " />
+				                  </div>
+				                </div>
+				                <div class="col-md-6">
+				                  <div class="form-label-group">
+									<p:inputText id="itNome" styleClass="form-control"
 										value="#{funcionarioController.entity.nome}" required="true">
 										<p:focus for="itNome" />
 									</p:inputText>
-								</h:panelGroup>
-
-								<h:panelGroup>
-									<p:outputLabel for="itEmail" value="Email: " />
-									<p:inputText id="itEmail"
+				                    <p:outputLabel for="itNome" value="Nome: " />									
+				                  </div>
+				                </div>
+				              </div>
+				            </div>
+				            <div class="form-group">
+				              <div class="form-row">
+				                <div class="col-md-6">
+				                  <div class="form-label-group">
+									<p:inputText id="itEmail" styleClass="form-control"
 										value="#{funcionarioController.entity.email}" required="true">
 										<p:focus for="itEmail" />
 									</p:inputText>
-								</h:panelGroup>
-
-								<h:panelGroup>
+									<p:outputLabel for="itEmail" value="E-mail: " />
+				                  </div>
+				                </div>
+				                <div class="col-md-6">
+				                  <div class="form-label-group">
+									<p:password id="itSenha" label="Senha" required="true" styleClass="form-control"
+										value="#{funcionarioController.entity.senha}"  >
+											<p:focus for="itSenha" />
+										</p:password>
 									<p:outputLabel value="Senha: " />
-									<p:inputMask id="itSenha"
-										value="#{funcionarioController.entity.senha}" required="true" />
-								</h:panelGroup>
-
-								<h:panelGroup>
-									<p:outputLabel for="itCargo" value="Cargo: " />
-									<p:inputText id="itCargo"
-										value="#{funcionarioController.entity.cargo}" required="true">
-										<p:focus for="itCargo" />
+				                  </div>
+				                </div>
+				              </div>
+				            </div>
+				            <div class="form-group">
+				              <div class="form-label-group">
+									<p:inputText id="itRg" styleClass="form-control"
+										value="#{funcionarioController.entity.rg}" required="true">
+										<p:focus for="itRg" />
 									</p:inputText>
-								</h:panelGroup>
+								<p:outputLabel for="itRg" value="RG: " />
+				              </div>
+				            </div>
 
-								<p:spacer />
-							</p:panelGrid>
-
-						</div>
+				        </div>
+				      </div>
 
 						<p:spacer />
 
@@ -95,31 +98,36 @@
 							layout="grid" styleClass="ui-fluid  ">
 
 							<p:commandButton value="Incluir"
-								styleClass="btn-primary btn-block"
+								styleClass="btn-primary"
 								disabled="#{funcionarioController.entity.id != null}"
 								actionListener="#{funcionarioController.incluir}"
 								update="@form formDataTable" process="@this pgDados" />
 
 							<p:commandButton value="Alterar"
-								styleClass="btn-primary btn-block"
+								styleClass="btn-info btn-block"
 								disabled="#{funcionarioController.entity.id == null}"
 								actionListener="#{funcionarioController.alterar}"
 								update="@form formDataTable" process="@this pgDados" />
 
 							<p:commandButton value="Remover"
-								styleClass="btn-primary btn-block"
+								styleClass="btn-danger btn-block"
 								disabled="#{funcionarioController.entity.id == null}"
 								actionListener="#{funcionarioController.remover}"
 								update="@form formDataTable" process="@this pgDados" />
 
 							<p:commandButton value="Limpar"
-								styleClass="btn-primary btn-block"
+								styleClass="btn-warning btn-block"
 								actionListener="#{funcionarioController.limpar}"
 								update="@form formDataTable" process="@this" />
+								
+								    <p:commandButton value="Basic" type="button" onclick="PF('dlg1').show();" />
+								
 						</p:panelGrid>
 
 					</h:form>
-
+<p:dialog header="Basic Dialog" widgetVar="dlg1" minHeight="40">
+    <h:outputText value="Resistance to PrimeFaces is futile!" />
+</p:dialog>
 				</p:panel>
 				<p:spacer />
 
