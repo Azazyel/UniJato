@@ -7,6 +7,15 @@
 	padding: 0 0 0 0;
 }
 
+html{
+	font-size: 12pt !important;	
+}
+
+.navbar{
+	border-radius: 0 !important;
+	margin-bottom: 0 !important;
+}
+
 .cadFunci{
 	width: 100%;
 }
