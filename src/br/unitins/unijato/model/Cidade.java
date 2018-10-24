@@ -1,7 +1,5 @@
 package br.unitins.unijato.model;
 
-import java.io.Serializable;
-
 import javax.persistence.Entity;
 
 @Entity

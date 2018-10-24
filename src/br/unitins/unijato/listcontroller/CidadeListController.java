@@ -1,13 +1,10 @@
 package br.unitins.unijato.listcontroller;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-
-import org.eclipse.persistence.internal.descriptors.PersistenceObjectAttributeAccessor;
 
 import br.unitins.unijato.model.Cidade;
 import br.unitins.unijato.repository.CidadeRepository;
