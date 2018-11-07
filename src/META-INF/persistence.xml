@@ -10,6 +10,7 @@
 		<class>br.unitins.unijato.model.Cidade</class>
 		<class>br.unitins.unijato.model.Cliente</class>
 		<class>br.unitins.unijato.model.DefaultEntity</class>
+		<class>br.unitins.unijato.model.Entrada</class>
 		<class>br.unitins.unijato.model.Funcionario</class>
 		<class>br.unitins.unijato.model.Pessoa</class>
 		<class>br.unitins.unijato.model.Servico</class>
@@ -17,7 +18,7 @@
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url"
-				value="jdbc:postgresql://localhost:5433/lavajatodb?useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8" />
+				value="jdbc:postgresql://localhost:5432/lavajatodb?useUnicode=true&amp;characterEncoding=UTF-8&amp;characterSetResults=UTF-8" />
 				
 			<property name="javax.persistence.jdbc.driver"
 				value="org.postgresql.Driver" />

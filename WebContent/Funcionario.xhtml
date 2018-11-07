@@ -38,11 +38,15 @@
 										<div class="col-md-3">
 											<div class="form-label-group">
 
-												<p:inputText id="itCpf" styleClass="form-control"
-													value="#{funcionarioController.entity.cpf}" required="true">
-													<p:focus for="itCpf" />
-												</p:inputText>
-												<p:outputLabel for="itCpf" value="CPF: " />
+												<p:inputText id="itCpfBusca" styleClass="form-control"
+													value="#{funcionarioController.pesquisa}" required="true">
+													<p:ajax event="blur" listener="#{funcionarioController.pesquisarCPF}"
+														process="@this itCpfBusca" update="formDados"  /> 
+												</p:inputText> 
+												<p:outputLabel for="itCpfBusca" value="CPF: " />
+												
+												<p:inputText value="#{funcionarioController.entity.cpf}" id="itCpf" type="hidden" />
+												
 											</div>
 										</div>
 										<div class="col-md-6">
@@ -50,7 +54,6 @@
 												<p:inputText id="itNome" styleClass="form-control"
 													value="#{funcionarioController.entity.nome}"
 													required="true">
-													<p:focus for="itNome" />
 												</p:inputText>
 
 												<p:outputLabel for="itNome">
@@ -69,7 +72,6 @@
 												<p:inputText id="itEmail" styleClass="form-control"
 													value="#{funcionarioController.entity.email}"
 													required="true">
-													<p:focus for="itEmail" />
 												</p:inputText>
 												<p:outputLabel for="itEmail" value="E-mail: " />
 											</div>
@@ -79,7 +81,6 @@
 												<p:password id="itSenha" label="Senha" required="true"
 													styleClass="form-control"
 													value="#{funcionarioController.entity.senha}">
-													<p:focus for="itSenha" />
 												</p:password>
 												<p:outputLabel value="Senha: " />
 											</div>
@@ -90,7 +91,6 @@
 									<div class="form-label-group">
 										<p:inputText id="itRg" styleClass="form-control"
 											value="#{funcionarioController.entity.rg}" required="true">
-											<p:focus for="itRg" />
 										</p:inputText>
 										<p:outputLabel for="itRg" value="RG: " />
 									</div>
@@ -135,8 +135,9 @@
 				<p:spacer />
 
 				<p:dialog header="Pesquisa de Pessoas" appendTo="@(body)"
-					widgetVar="dlg1" modal="true" width="720" height="400" closeOnEscape="true">
-					
+					widgetVar="dlg1" modal="true" width="720" height="400"
+					closeOnEscape="true">
+				 
 					<p:panel styleClass="card no-border" toggleable="true"
 						toggleSpeed="300">
 						<h:form id="formDataTable">
@@ -154,7 +155,8 @@
 								</p:column>
 
 								<p:column headerText="Nome">
-									<h:commandLink value="#{funcionario.nome}" onclick="PF('dlg1').hide();">
+									<h:commandLink value="#{funcionario.nome}"
+										onclick="PF('dlg1').hide();">
 										<f:ajax render="formDados" execute="@this" />
 										<f:setPropertyActionListener value="#{funcionario}"
 											target="#{funcionarioController.entity}" />

@@ -13,7 +13,7 @@ public class CarroController extends Controller<Carro>{
 	
 	private static final long serialVersionUID = 2285090812059600632L;
 	
-	private List<Carro> listaLogin = null;
+	private List<Carro> listaCarro = null;
 	
 	public Carro getEntity() {
 		if (entity == null)
@@ -23,14 +23,14 @@ public class CarroController extends Controller<Carro>{
 
 	public void limpar() {
 		setEntity(null);
-		listaLogin = null;		
+		listaCarro = null;		
 	}
 	
 	public List<Carro> getListaCarro() {
 		CarroRepository repository = new CarroRepository(getEntityManager());
-		if (listaLogin == null)
-			listaLogin = repository.getCarro();
-		return listaLogin;
+		if (listaCarro == null)
+			listaCarro = repository.getCarro();
+		return listaCarro;
 	}
 	
 }

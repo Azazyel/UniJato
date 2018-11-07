@@ -44,6 +44,14 @@
 										<p:focus for="itPlaca" />
 									</p:inputText>
 								</h:panelGroup>
+								
+								<h:panelGroup>
+									<p:outputLabel for="itMarca" value="Marca: " />
+									<p:inputText id="itMarca"
+										value="#{carroController.entity.marca}" required="true">
+										<p:focus for="itMarca" />
+									</p:inputText>
+								</h:panelGroup>
 
 								<h:panelGroup>
 									<p:outputLabel for="itModelo" value="Modelo: " />

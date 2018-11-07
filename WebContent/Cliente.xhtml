@@ -13,132 +13,144 @@
 <h:body>
 	<ui:composition template="/template.xhtml">
 		<ui:define name="conteudo">
-    		
-    		<p:ajaxStatus onstart="PF('statusDialog').show()" onsuccess="PF('statusDialog').hide()" />
-	 
-	<p:dialog widgetVar="statusDialog" modal="true" draggable="false" closable="false" resizable="false" showHeader="false">
-	    <p:graphicImage name="/images/loading.gif" />
-	</p:dialog>
-	<div style="position: absolute; top: 100px; left: 80%" >
-		<p:growl />
-	</div>
-	<h2 class="align-center">Cadastrar Cliente</h2>
-	<div class="ui-g-12">
-		<p:panel styleClass="card no-border" toggleable="true"
-			toggleSpeed="300">
 
-			<h:form id="formDados">
-				
-				<div style="text-align: left;"
-					class="ui-fluid #{layoutMB.flat ? 'ui-flat':''} ">
-					<p:panelGrid id="pgDados" columns="3"
-						columnClasses="ui-grid-col-4, ui-grid-col-4, ui-grid-col-4 " layout="grid"
-						styleClass="ui-fluid card">
+			<p:ajaxStatus onstart="PF('statusDialog').show()"
+				onsuccess="PF('statusDialog').hide()" />
 
-						<h:panelGroup>
-							<p:outputLabel for="itCpf" value="CPF: " />
-							<p:inputText id="itCpf" value="#{clienteController.entity.cpf}" required="true">
-								<p:focus for="itCpf" />								
-							</p:inputText>
-						</h:panelGroup>
-						
-						<h:panelGroup>
-							<p:outputLabel for="itRg" value="RG: " />
-							<p:inputText id="itRg" value="#{clienteController.entity.rg}" required="true">
-								<p:focus for="itRg" />								
-							</p:inputText>
-						</h:panelGroup>
-						
-						<h:panelGroup>
-							<p:outputLabel for="itNome" value="Nome: " />
-							<p:inputText id="itNome" value="#{clienteController.entity.nome}" required="true">
-								<p:focus for="itNome" />								
-							</p:inputText>
-						</h:panelGroup>
-						
-						<h:panelGroup>
-							<p:outputLabel for="itEmail" value="Email: " />
-							<p:inputText id="itEmail" value="#{clienteController.entity.email}" required="true">
-								<p:focus for="itEmail" />								
-							</p:inputText>
-						</h:panelGroup>
-						
+			<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+				closable="false" resizable="false" showHeader="false">
+				<p:graphicImage name="/images/loading.gif" />
+			</p:dialog>
+			<div style="position: absolute; top: 100px; left: 80%">
+				<p:growl />
+			</div>
+			<h2 class="align-center">Cadastrar Cliente</h2>
+			<div class="ui-g-12">
+				<p:panel styleClass="card no-border" toggleable="true"
+					toggleSpeed="300">
+
+					<h:form id="formDados">
+
+						<div style="text-align: left;"
+							class="ui-fluid #{layoutMB.flat ? 'ui-flat':''} ">
+							<p:panelGrid id="pgDados" columns="3"
+								columnClasses="ui-grid-col-4, ui-grid-col-4, ui-grid-col-4 "
+								layout="grid" styleClass="ui-fluid card">
+
+								<h:panelGroup>
+									<p:outputLabel for="itCpf" value="CPF: " />
+									<p:inputText id="itCpf" value="#{clienteController.entity.cpf}"
+										required="true">
+										<p:focus for="itCpf" />
+									</p:inputText>
+								</h:panelGroup>
+
+								<h:panelGroup>
+									<p:outputLabel for="itRg" value="RG: " />
+									<p:inputText id="itRg" value="#{clienteController.entity.rg}"
+										required="true">
+										<p:focus for="itRg" />
+									</p:inputText>
+								</h:panelGroup>
+
+								<h:panelGroup>
+									<p:outputLabel for="itNome" value="Nome: " />
+									<p:inputText id="itNome"
+										value="#{clienteController.entity.nome}" required="true">
+										<p:focus for="itNome" />
+									</p:inputText>
+								</h:panelGroup>
+
+								<h:panelGroup>
+									<p:outputLabel for="itEmail" value="Email: " />
+									<p:inputText id="itEmail"
+										value="#{clienteController.entity.email}" required="true">
+										<p:focus for="itEmail" />
+									</p:inputText>
+								</h:panelGroup>
+
+								
+
+								<p:spacer />
+							</p:panelGrid>
+
+						</div>
+
 						<p:spacer />
-					</p:panelGrid>
-					
-				</div>
 
+						<p:panelGrid columns="4" style="text-align: center;"
+							columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2"
+							layout="grid" styleClass="ui-fluid  ">
+
+							<p:commandButton value="Incluir"
+								styleClass="noS btn-primary btn-block"
+								disabled="#{clienteController.entity.id != null}"
+								actionListener="#{clienteController.incluir}"
+								update="@form formDataTable" process="@this pgDados" />
+
+							<p:commandButton value="Alterar"
+								styleClass="btn-primary btn-block"
+								disabled="#{clienteController.entity.id == null}"
+								actionListener="#{clienteController.alterar}"
+								update="@form formDataTable" process="@this pgDados" />
+
+							<p:commandButton value="Remover"
+								styleClass="btn-primary btn-block"
+								disabled="#{clienteController.entity.id == null}"
+								actionListener="#{clienteController.remover}"
+								update="@form formDataTable" process="@this pgDados" />
+
+							<p:commandButton value="Limpar"
+								styleClass="btn-primary btn-block"
+								actionListener="#{clienteController.limpar}"
+								update="@form formDataTable" process="@this" />
+						</p:panelGrid>
+
+					</h:form>
+
+				</p:panel>
 				<p:spacer />
 
-				<p:panelGrid columns="4" style="text-align: center;"
-					columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2"
-					layout="grid" styleClass="ui-fluid  ">
+				<p:panel styleClass="card no-border" toggleable="true"
+					toggleSpeed="300">
+					<h:form id="formDataTable">
+						<p:dataTable styleClass="box-primary" var="cliente"
+							value="#{clienteController.listaCliente}">
+							<f:facet name="header">
+								<h:outputText value="Clentes Cadastrados" />
+							</f:facet>
+							<p:column headerText="Id">
+								<h:outputText value="#{cliente.id}" />
+							</p:column>
 
-					<p:commandButton value="Incluir" styleClass="noS btn-primary btn-block"
-						disabled="#{clienteController.entity.id != null}"
-						actionListener="#{clienteController.incluir}"
-						update="@form formDataTable" process="@this pgDados" />
+							<p:column headerText="Cpf">
+								<h:outputText value="#{cliente.cpf}" />
+							</p:column>
 
-					<p:commandButton value="Alterar" styleClass="btn-primary btn-block"
-						disabled="#{clienteController.entity.id == null}"
-						actionListener="#{clienteController.alterar}"
-						update="@form formDataTable" process="@this pgDados" />
+							<p:column headerText="Rg">
+								<h:outputText value="#{cliente.rg}" />
+							</p:column>
 
-					<p:commandButton value="Remover" styleClass="btn-primary btn-block"
-						disabled="#{clienteController.entity.id == null}"
-						actionListener="#{clienteController.remover}"
-						update="@form formDataTable" process="@this pgDados" />
+							<p:column headerText="Nome">
+								<h:commandLink value="#{cliente.nome}">
+									<f:ajax render="formDados" execute="@this" />
+									<f:setPropertyActionListener value="#{cliente}"
+										target="#{clienteController.entity}" />
+								</h:commandLink>
+							</p:column>
 
-					<p:commandButton value="Limpar" styleClass="btn-primary btn-block"
-						actionListener="#{clienteController.limpar}"
-						update="@form formDataTable" process="@this" />
-				</p:panelGrid>
+							<p:column headerText="Email">
+								<h:outputText value="#{cliente.email}" />
+							</p:column>
 
-			</h:form>
+						</p:dataTable>
+					</h:form>
+				</p:panel>
+			</div>
 
-		</p:panel>
-		<p:spacer />
-
-		<p:panel styleClass="card no-border" toggleable="true"
-			toggleSpeed="300">
-			<h:form id="formDataTable">
-				<p:dataTable styleClass="box-primary" var="cliente"
-					value="#{clienteController.listaCliente}">
-					<f:facet name="header">
-						<h:outputText value="Clentes Cadastrados" />
-					</f:facet>
-					<p:column headerText="Id">
-						<h:outputText value="#{cliente.id}" />
-					</p:column>
-					
-					<p:column headerText="Cpf">
-						<h:outputText value="#{cliente.cpf}" />
-					</p:column>
-					
-					<p:column headerText="Rg">
-						<h:outputText value="#{cliente.rg}" />
-					</p:column>
-					
-					<p:column headerText="Nome">
-						<h:commandLink value="#{cliente.nome}">
-							<f:ajax render="formDados" execute="@this" />
-							<f:setPropertyActionListener value="#{cliente}"
-								target="#{clienteController.entity}" />
-						</h:commandLink>
-					</p:column>
-					
-					<p:column headerText="Email">
-						<h:outputText value="#{cliente.email}" />
-					</p:column>
-					
-				</p:dataTable>
-			</h:form>
-		</p:panel>
-	</div>
-	
-	</ui:define>
+		</ui:define>
 	</ui:composition>
-    		
-    </h:body>
-    
+
+</h:body>
+
 </html>
