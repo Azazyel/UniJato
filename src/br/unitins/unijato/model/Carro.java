@@ -10,16 +10,18 @@ public class Carro extends DefaultEntity<Carro>{
 	private String placa;
 	private String modelo;
 	private String marca;
+	private TipoVeiculo tipoVeiculo;
 	
 	public Carro() {
-		//Default
+		//default
 	}
-	
-	public Carro(String placa, String modelo, String marca) {
+
+	public Carro(String placa, String modelo, String marca, TipoVeiculo tipoVeiculo) {
 		super();
 		this.placa = placa;
 		this.modelo = modelo;
 		this.marca = marca;
+		this.tipoVeiculo = tipoVeiculo;
 	}
 
 	public String getPlaca() {
@@ -44,6 +46,14 @@ public class Carro extends DefaultEntity<Carro>{
 
 	public void setMarca(String marca) {
 		this.marca = marca;
+	}
+
+	public TipoVeiculo getTipoVeiculo() {
+		return tipoVeiculo;
+	}
+
+	public void setTipoVeiculo(TipoVeiculo tipoVeiculo) {
+		this.tipoVeiculo = tipoVeiculo;
 	}
 	
 }

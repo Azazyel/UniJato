@@ -31,7 +31,8 @@
 					<h:form id="formDados">
 
 						<f:metadata>
-							<f:event type="preRenderView" listener="#{entradaController.gerarCodigo}"  />
+							<f:event type="preRenderView"
+								listener="#{entradaController.gerarCodigo}" />
 						</f:metadata>
 
 
@@ -120,19 +121,21 @@
 										<div class="form-row">
 											<div class="col-md-2">
 												<div class="form-label-group">
-													<p:inputText id="itStatus" styleClass="form-control"
-														value="#{entradaController.entity.status}" required="true">
-													</p:inputText>
-													<p:outputLabel for="itStatus" value="Status " />
+													<p:selectOneMenu id="status"
+														value="#{entradaController.entity.status}" style="width:125px">
+														<f:selectItem itemLabel="Iniciado" itemValue="Iniciado" />
+													</p:selectOneMenu>
 												</div>
 											</div>
-											<div class="col-md-2">
+											<div class="col-md-3">
 												<div class="form-label-group">
-													<p:inputText id="itServico" styleClass="form-control"
-														value="#{entradaController.entity.servico}"
-														required="true">
-													</p:inputText>
-													<p:outputLabel for="itServico" value="Serviço: " />
+													<p:selectOneMenu
+														value="#{entradaController.entity.carro.tipoVeiculo}">
+														<f:selectItem itemLabel="Tipo do Veículo" itemValue="" />
+														<f:selectItems
+															value="#{entradaController.vetorTipoVeiculo}" var="cor"
+															itemLabel="#{cor.label}" itemValue="#{cor}" />
+													</p:selectOneMenu>
 												</div>
 											</div>
 										</div>

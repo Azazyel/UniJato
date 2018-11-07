@@ -9,13 +9,13 @@ public class Servico extends DefaultEntity<Servico>{
 	
 	private String nome;
 	private String descricao;
-	private String valor;
+	private double valor;
 	
 	public Servico() {
 		//Default
 	}
 	
-	public Servico(String nome, String descricao, String valor) {
+	public Servico(String nome, String descricao, double valor) {
 		super();
 		this.nome = nome;
 		this.descricao = descricao;
@@ -38,11 +38,11 @@ public class Servico extends DefaultEntity<Servico>{
 		this.descricao = descricao;
 	}
 
-	public String getValor() {
+	public double getValor() {
 		return valor;
 	}
 
-	public void setValor(String valor) {
+	public void setValor(double valor) {
 		this.valor = valor;
 	}
 	

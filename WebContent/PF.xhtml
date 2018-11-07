@@ -22,13 +22,53 @@
 		</div>
 		<div class="col-md-6">
 			<div class="form-label-group">
-				<p:inputText id="itClienteNome" styleClass="form-control"
+				<p:inputText id="itNome" styleClass="form-control"
 					value="#{entradaController.entity.cliente.nome}" required="true">
 				</p:inputText>
-				<p:outputLabel for="itClienteNome" value="Nome do Cliente: " />
+
+				<p:outputLabel for="itNome">
+					<p:commandLink value="Nome do Cliente: " process="@this"
+						styleClass="text-info" onclick="PF('dlgPessoaFisica').show();" />
+					<i class="fa fa-search fa-fw"></i>
+				</p:outputLabel>
 			</div>
 		</div>
 	</div>
+
+	<p:dialog header="Pesquisa de Pessoas" appendTo="@(body)"
+		widgetVar="dlgPessoaFisica" modal="true" width="720" height="400"
+		closeOnEscape="true">
+
+		<p:panel styleClass="card no-border" toggleable="true"
+			toggleSpeed="300">
+			<h:form id="formDataTable">
+				<p:dataTable styleClass="box-primary" var="cli"
+					value="#{clienteController.listaCliente}">
+					<f:facet name="header">
+						<h:outputText value="Clientes Cadastrados" />
+					</f:facet>
+					<p:column headerText="Id">
+						<h:outputText value="#{cli.id}" />
+					</p:column>
+
+					<p:column headerText="Cpf">
+						<h:outputText value="#{cli.cpf}" />
+					</p:column>
+
+					<p:column headerText="Nome">
+						<h:commandLink value="#{cli.nome}"
+							onclick="PF('dlgPessoaFisica').hide();">
+							<f:ajax render="formDados" execute="@this" />
+							<f:setPropertyActionListener value="#{cli}"
+								target="#{entradaController.entity.cliente}" />
+						</h:commandLink>
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+		</p:panel>
+	</p:dialog>
+
 </h:body>
 
 </html>

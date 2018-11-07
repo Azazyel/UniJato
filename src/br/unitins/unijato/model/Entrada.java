@@ -13,9 +13,9 @@ public class Entrada extends DefaultEntity<Entrada> {
 	private Date dataEntrada;
 	private String status;
 	private String tipoCliente;
-	Cliente cliente;
-	Carro carro;
-	Servico servico;
+	Cliente cliente = new Cliente();
+	Carro carro = new Carro();
+	Servico servico = new Servico();
 		
 	
 	public Integer getCodigo() {
