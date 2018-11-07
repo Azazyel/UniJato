@@ -54,6 +54,7 @@ public class EntradaController extends Controller<Entrada> {
 		return listaServico;
 	}
 	
+	
 	public List<Entrada> getListaEntrada() {
 		EntradaRepository repository = new EntradaRepository(getEntityManager());
 		if (listaEntrada == null)

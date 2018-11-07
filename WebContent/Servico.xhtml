@@ -44,9 +44,11 @@
 										<p:focus for="itNome" />
 									</p:inputText>
 
-									<p:outputLabel value="Valor: " />
-									<p:inputMask id="itValor"
-										value="#{servicoController.entity.valor}" mask="99,99" />
+									<p:outputLabel for="itValor" value="Valor: " />
+									<p:inputNumber id="itValor"
+										value="#{servicoController.entity.valor}" symbol="R$ "
+										required="true" />
+
 								</h:panelGroup>
 
 								<h:panelGroup>
@@ -73,19 +75,19 @@
 								styleClass="btn-primary btn-block"
 								disabled="#{servicoController.entity.id != null}"
 								actionListener="#{servicoController.incluir}"
-								update="@form formDataTable" process="@this pgDados" />
+								update="@form formDataTable" process="@this formDados" />
 
 							<p:commandButton value="Alterar"
 								styleClass="btn-primary btn-block"
 								disabled="#{servicoController.entity.id == null}"
 								actionListener="#{servicoController.alterar}"
-								update="@form formDataTable" process="@this pgDados" />
+								update="@form formDataTable" process="@this formDados" />
 
 							<p:commandButton value="Remover"
 								styleClass="btn-primary btn-block"
 								disabled="#{servicoController.entity.id == null}"
 								actionListener="#{servicoController.remover}"
-								update="@form formDataTable" process="@this pgDados" />
+								update="@form formDataTable" process="@this formDados" />
 
 							<p:commandButton value="Limpar"
 								styleClass="btn-primary btn-block"
