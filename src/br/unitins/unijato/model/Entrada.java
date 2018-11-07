@@ -17,7 +17,7 @@ public class Entrada extends DefaultEntity<Entrada> {
 	Carro carro;
 	Servico servico;
 		
-		
+	
 	public Integer getCodigo() {
 		return codigo;
 	}

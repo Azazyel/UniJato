@@ -30,6 +30,10 @@
 
 					<h:form id="formDados">
 
+						<f:metadata>
+							<f:event type="preRenderView" listener="#{entradaController.gerarCodigo}"  />
+						</f:metadata>
+
 
 						<div class="card">
 							<div class="card-header">Entrada de Veículo</div>
@@ -43,10 +47,12 @@
 												<p:selectOneRadio id="tipoCliente"
 													value="#{entradaController.entity.tipoCliente}">
 													<f:selectItem itemLabel="Pessoa Fisica"
-														itemValue="PF" binding="true" />
-														
+														itemValue="PF.xhtml" />
+
 													<f:selectItem itemLabel="Pessoa Juridica"
-														itemValue="PJ" />
+														itemValue="PJ.xhtml" />
+
+													<p:ajax update="formDados" process="@this" />
 												</p:selectOneRadio>
 											</div>
 										</div>
@@ -73,27 +79,11 @@
 										</div>
 									</div>
 									<div class="form-group">
-										<div class="form-row">
-											<div class="col-md-3">
-												<div class="form-label-group">
-													<p:inputText id="itCliente" styleClass="form-control"
-														value="#{entradaController.entity.cliente.cpf}"
-														required="true"  >
-													</p:inputText>
-													<p:outputLabel for="itCliente" value="CPF: " />
-												</div>
-											</div>
-											<div class="col-md-6">
-												<div class="form-label-group">
-													<p:inputText id="itClienteNome" styleClass="form-control"
-														value="#{entradaController.entity.cliente.nome}"
-														required="true">
-													</p:inputText>
-													<p:outputLabel for="itClienteNome"
-														value="Nome do Cliente: " />
-												</div>
-											</div>
-										</div>
+
+										<ui:include id="clienteFrame"
+											src="#{entradaController.entity.tipoCliente}" />
+
+
 									</div>
 									<div class="form-group">
 										<div class="form-row">
@@ -156,25 +146,14 @@
 							columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2"
 							layout="grid" styleClass="ui-fluid  ">
 
-							<p:commandButton value="Incluir" styleClass="btn-primary"
-								disabled="#{funcionarioController.entity.id != null}"
-								actionListener="#{funcionarioController.incluir}"
-								update="@form " process="@this pgDados" />
-
-							<p:commandButton value="Alterar" styleClass="btn-info btn-block"
-								disabled="#{funcionarioController.entity.id == null}"
-								actionListener="#{funcionarioController.alterar}"
-								update="@form " process="@this pgDados" />
-
-							<p:commandButton value="Remover"
-								styleClass="btn-danger btn-block"
-								disabled="#{funcionarioController.entity.id == null}"
-								actionListener="#{funcionarioController.remover}" update="@form"
+							<p:commandButton value="Gerar Serviço" styleClass="btn-primary"
+								disabled="#{entradaController.entity.id != null}"
+								actionListener="#{entradaController.incluir}" update="@form "
 								process="@this pgDados" />
 
 							<p:commandButton value="Limpar"
 								styleClass="btn-warning btn-block"
-								actionListener="#{funcionarioController.limpar}" update="@form "
+								actionListener="#{entradaController.limpar}" update="@form "
 								process="@this" />
 
 
