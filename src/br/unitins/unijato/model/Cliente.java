@@ -1,11 +1,20 @@
 package br.unitins.unijato.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
+import br.unitins.unijato.model.Pessoa;
 
 @Entity
 public class Cliente extends DefaultEntity<Cliente>{
 	
 	private static final long serialVersionUID = -8507170722133870368L;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="idpessoa", unique=true)
+	private Pessoa pessoa;
 	
 	private String cpf;
 	private String rg;
