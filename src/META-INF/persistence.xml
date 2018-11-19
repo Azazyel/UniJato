@@ -12,6 +12,7 @@
 		<class>br.unitins.unijato.model.DefaultEntity</class>
 		<class>br.unitins.unijato.model.Entrada</class>
 		<class>br.unitins.unijato.model.Funcionario</class>
+		<class>br.unitins.unijato.model.Usuario</class>
 		<class>br.unitins.unijato.model.Pessoa</class>
 		<class>br.unitins.unijato.model.Servico</class>
 		<class>br.unitins.unijato.model.Telefone</class>
