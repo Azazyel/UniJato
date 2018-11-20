@@ -41,6 +41,7 @@
 									<p:outputLabel for="itCpf" value="CPF: " />
 									<p:inputText id="itCpf" value="#{clienteController.entity.cpf}"
 										required="true">
+										<f:validateRegex pattern="[0-9]{3}\.?[0-9]{3}\.?[0-9]{3}\-?[0-9]{2}" />
 										<p:focus for="itCpf" />
 									</p:inputText>
 								</h:panelGroup>
@@ -49,6 +50,7 @@
 									<p:outputLabel for="itRg" value="RG: " />
 									<p:inputText id="itRg" value="#{clienteController.entity.rg}"
 										required="true">
+										<f:validateRegex pattern="[0-9]{1}\.?[0-9]{3}\.?[0-9]{3}" />
 										<p:focus for="itRg" />
 									</p:inputText>
 								</h:panelGroup>
@@ -57,6 +59,7 @@
 									<p:outputLabel for="itNome" value="Nome: " />
 									<p:inputText id="itNome"
 										value="#{clienteController.entity.nome}" required="true">
+										<f:validateRegex pattern="[A-Za-z]+" />
 										<p:focus for="itNome" />
 									</p:inputText>
 								</h:panelGroup>
@@ -65,6 +68,7 @@
 									<p:outputLabel for="itEmail" value="Email: " />
 									<p:inputText id="itEmail"
 										value="#{clienteController.entity.email}" required="true">
+										<f:validateRegex pattern="(\W|^)[\w.\-]{0,25}@(yahoo|hotmail|gmail)\.com(\W|$)" />
 										<p:focus for="itEmail" />
 									</p:inputText>
 								</h:panelGroup>
@@ -117,7 +121,7 @@
 						<p:dataTable styleClass="box-primary" var="cliente"
 							value="#{clienteController.listaCliente}">
 							<f:facet name="header">
-								<h:outputText value="Clentes Cadastrados" />
+								<h:outputText value="Clientes Cadastrados" />
 							</f:facet>
 							<p:column headerText="Id">
 								<h:outputText value="#{cliente.id}" />

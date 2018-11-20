@@ -41,6 +41,7 @@
 									<p:outputLabel for="itPlaca" value="Placa: " />
 									<p:inputText id="itPlaca"
 										value="#{carroController.entity.placa}" required="true">
+										<f:validateRegex pattern="[A-Z]{3}-[0-9]{4}" />
 										<p:focus for="itPlaca" />
 									</p:inputText>
 								</h:panelGroup>
