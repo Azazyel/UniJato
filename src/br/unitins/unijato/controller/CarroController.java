@@ -6,11 +6,17 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 import br.unitins.unijato.model.Carro;
 import br.unitins.unijato.repository.CarroRepository;
+import br.unitins.unijato.validation.Validation;
 
 @Named
 @ViewScoped
 public class CarroController extends Controller<Carro>{
 	
+	public CarroController() {
+		super(null);
+		// TODO Auto-generated constructor stub
+	}
+
 	private static final long serialVersionUID = 2285090812059600632L;
 	
 	private List<Carro> listaCarro = null;

@@ -13,7 +13,7 @@ public class Entrada extends DefaultEntity<Entrada> {
 	private Date dataEntrada;
 	private String status;
 	private String tipoCliente;
-	Cliente cliente = new Cliente();
+	ClienteFisico cliente = new ClienteFisico();
 	Carro carro = new Carro();
 	Servico servico = new Servico();
 		
@@ -36,10 +36,10 @@ public class Entrada extends DefaultEntity<Entrada> {
 	public void setStatus(String status) {
 		this.status = status;
 	}
-	public Cliente getCliente() {
+	public ClienteFisico getCliente() {
 		return cliente;
 	}
-	public void setCliente(Cliente cliente) {
+	public void setCliente(ClienteFisico cliente) {
 		this.cliente = cliente;
 	}
 	public Carro getCarro() {

@@ -1,5 +1,6 @@
 package br.unitins.unijato.application;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -9,19 +10,20 @@ import javax.faces.application.FacesMessage.Severity;
 import javax.faces.context.FacesContext;
 
 public class Util {
-	
 	public static void addInfoMessage(String message) {
 		addMessage(message, FacesMessage.SEVERITY_INFO);
 	}
+
 	public static void addWarnMessage(String message) {
 		addMessage(message, FacesMessage.SEVERITY_WARN);
 	}
+
 	public static void addErroMessage(String message) {
 		addMessage(message, FacesMessage.SEVERITY_ERROR);
 	}
+
 	private static void addMessage(String message, Severity type) {
-		FacesContext.getCurrentInstance().addMessage(" ", 
-				new FacesMessage(type, message, message));
+		FacesContext.getCurrentInstance().addMessage(" ", new FacesMessage(type, message, message));
 	}
 	
 	public static String encrypt(String value) {
@@ -45,9 +47,14 @@ public class Util {
 		
 		return "Erro ao encriptar";
 	}
-	public static void main(String[] args) {
-		
-		System.out.println(Util.encrypt("janio"));
-	}
 	
+	public static void redirect(String page) {
+		FacesContext context = FacesContext.getCurrentInstance();
+         try {
+        	 context.getExternalContext().redirect(page);
+		 } catch (IOException e) {
+			 e.printStackTrace();
+		 }
+	}
+
 }

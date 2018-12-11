@@ -12,11 +12,17 @@ import org.primefaces.event.SelectEvent;
 import br.unitins.unijato.model.TipoUsuario;
 import br.unitins.unijato.application.Util;
 import br.unitins.unijato.model.Usuario;
+import br.unitins.unijato.validation.Validation;
 
 @Named
 @ViewScoped
 public class UsuarioController extends Controller<Usuario>{
 	
+	public UsuarioController() {
+		super(null);
+		// TODO Auto-generated constructor stub
+	}
+
 	private static final long serialVersionUID = 5653024247887410164L;
 
 	@Override

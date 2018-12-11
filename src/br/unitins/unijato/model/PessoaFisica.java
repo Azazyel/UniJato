@@ -2,13 +2,11 @@ package br.unitins.unijato.model;
 
 import java.util.Date;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import br.unitins.unijato.model.Cidade;
-
+@Entity
 public class PessoaFisica extends Pessoa{
 	
 	private static final long serialVersionUID = 8628846162588287194L;
@@ -17,10 +15,6 @@ public class PessoaFisica extends Pessoa{
 	private Date dataNascimento;
 	private String cpf;
 	private String rg;
-	
-	@ManyToOne
-	@JoinColumn(name="idCidade")
-	private Cidade cidade;
 	
 	public Date getDataNascimento() {
 		return dataNascimento;
@@ -40,11 +34,5 @@ public class PessoaFisica extends Pessoa{
 	public void setRg(String rg) {
 		this.rg = rg;
 	}
-	public Cidade getCidade() {
-		return cidade;
-	}
-	public void setCidade(Cidade cidade) {
-		this.cidade = cidade;
-	}
-	
+
 }

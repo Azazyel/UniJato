@@ -1,20 +1,11 @@
 package br.unitins.unijato.model;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-
-import br.unitins.unijato.model.Cidade;
-
 public class PessoaJuridica extends Pessoa{
 	
 	private static final long serialVersionUID = -6594255850067466251L;
 	
 	private String cnpj;
 	private String razaoSocial;
-	
-	@ManyToOne
-	@JoinColumn(name="idCidadeNatal")
-	private Cidade cidadeNatal;
 	
 	public String getCnpj() {
 		return cnpj;
@@ -28,11 +19,6 @@ public class PessoaJuridica extends Pessoa{
 	public void setRazaoSocial(String razaoSocial) {
 		this.razaoSocial = razaoSocial;
 	}
-	public Cidade getCidadeNatal() {
-		return cidadeNatal;
-	}
-	public void setCidadeNatal(Cidade cidadeNatal) {
-		this.cidadeNatal = cidadeNatal;
-	}
+
 	
 }
