@@ -75,6 +75,18 @@
 									</p:inputText>
 								</h:panelGroup>
 
+								<h:panelGroup>
+									<p:outputLabel value="Permissões: " />
+									<p:selectOneMenu
+										value="#{funcionarioController.entity.tipoUsuario}">
+										<f:selectItem itemLabel="Selecione..." itemValue="" />
+										<f:selectItems
+											value="#{funcionarioController.vetorTipoUsuario}"
+											var="tipo" itemLabel="#{tipo.label}" itemValue="#{tipo}" />
+									</p:selectOneMenu>
+
+ 								</h:panelGroup>
+
 
 								<h:panelGroup>
 									<p:outputLabel value="Endereco:" />

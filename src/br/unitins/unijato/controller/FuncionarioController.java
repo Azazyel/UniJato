@@ -2,9 +2,12 @@ package br.unitins.unijato.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
+
 import br.unitins.unijato.model.Funcionario;
+import br.unitins.unijato.model.TipoUsuario;
 import br.unitins.unijato.repository.FuncionarioRepository;
 
 @Named
@@ -52,6 +55,10 @@ public class FuncionarioController extends Controller<Funcionario> {
 
 	public void setPesquisa(String pesquisa) {
 		this.pesquisa = pesquisa;
+	}
+	
+	public TipoUsuario[] getVetorTipoUsuario() {
+		return TipoUsuario.values();
 	}
 
 }

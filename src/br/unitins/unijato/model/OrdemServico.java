@@ -2,9 +2,11 @@ package br.unitins.unijato.model;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -27,7 +29,42 @@ public class OrdemServico extends DefaultEntity<OrdemServico>{
 	@ManyToOne
 	@JoinColumn(name="idClienteFisico")
 	private ClienteFisico clienteFisico;
+	
+	@ManyToOne
+	@JoinColumn(name="idCarro")
+	private Carro carro;
+	
+	@ManyToOne
+	@JoinColumn(name="idServico")
+	private Servico servico;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="idPagamento", unique=true)
+	private Pagamento pagamento;
+	
+	public Carro getCarro() {
+		if(carro == null)
+			carro = new Carro();
+		return carro;
+	}
+	
+	public Pagamento getPagamento() {
+		if(pagamento == null)
+			pagamento = new Pagamento();
+		return pagamento;
+	}
+	
+	
+	public Servico getServico() {
+		if(servico == null)
+			servico = new Servico();
+		return servico;
+	}
 
+	
+	public void setCarro(Carro carro) {
+		this.carro = carro;
+	}
 
 	public String getStatus() {
 		return status;
@@ -70,6 +107,8 @@ public class OrdemServico extends DefaultEntity<OrdemServico>{
 	}
 
 	public ClienteFisico getClienteFisico() {
+		if(clienteFisico == null)
+			clienteFisico = new ClienteFisico();
 		return clienteFisico;
 	}
 

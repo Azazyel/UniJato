@@ -14,11 +14,11 @@ import br.unitins.unijato.repository.ServicoRepository;
 
 @Named
 @ViewScoped
-public class OrdemServicoController extends Controller<OrdemServico> {
+public class OrdemServicoController2 extends Controller<OrdemServico> {
 
 	private static final long serialVersionUID = 4961007223933510368L;
 
-	public OrdemServicoController() {
+	public OrdemServicoController2() {
 		super(null);
 		// TODO Auto-generated constructor stub
 	}

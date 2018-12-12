@@ -14,114 +14,143 @@
 	<ui:composition template="/template.xhtml">
 		<ui:define name="conteudo">
 
-			 <h:form>
-         
-    <p:growl id="growl" sticky="true" showDetail="true"/>
- 
-    <p:wizard flowListener="#{OrdemServicoController.onFlowProcess}">
-        <p:tab id="personal" title="Personal">
-            <p:panel header="Dados Pessoais - Pessoa Física">
-                <p:messages />
-                <h:panelGrid columns="2" columnClasses="label, value">
-                    <h:outputText value="Nome: " />
-                    <p:inputText value="#{ordemServicoController.entity.nome}" required="true" label=""/>
- 
-                    <h:outputText value="Lastname: *" />
-                    <p:inputText value="#{userWizard.user.lastname}" required="true" label="Lastname"/>
- 
-                    <h:outputText value="Age: " />
-                    <p:inputText value="#{userWizard.user.age}" />
- 
-                    <h:outputText value="Skip to last: " />
-                    <h:selectBooleanCheckbox value="#{userWizard.skip}" />
-                </h:panelGrid>
-            </p:panel>
-        </p:tab>
- 
-        <p:tab id="address" title="Address">
-            <p:panel header="Address Details">
-                <p:messages />
-                <h:panelGrid columns="2" columnClasses="label, value">
-                    <h:outputText value="Street: " />
-                    <p:inputText value="#{userWizard.user.street}" />
- 
-                    <h:outputText value="Postal Code: " />
-                    <p:inputText value="#{userWizard.user.postalCode}" />
- 
-                    <h:outputText value="City: " />
-                    <p:inputText value="#{userWizard.user.city}" />
- 
-                    <h:outputText value="Skip to last: " />
-                    <h:selectBooleanCheckbox value="#{userWizard.skip}" />
-                </h:panelGrid>
-            </p:panel>
-        </p:tab>
- 
-        <p:tab id="contact" title="Contact">
-            <p:panel header="Contact Information">
-                <p:messages />
-                <h:panelGrid columns="2" columnClasses="label, value">
-                    <h:outputText value="Email: *" />
-                    <p:inputText value="#{userWizard.user.email}" required="true" label="Email"/>
- 
-                    <h:outputText value="Phone: " />
-                    <p:inputText value="#{userWizard.user.phone}"/>
- 
-                    <h:outputText value="Additional Info: " />
-                    <p:inputText value="#{userWizard.user.info}"/>
-                </h:panelGrid>
-            </p:panel>
-        </p:tab>
- 
-        <p:tab id="confirm" title="Confirmation">
-            <p:panel header="Confirmation">
-                <h:panelGrid id="confirmation" columns="3" columnClasses="grid,grid,grid">
-                    <h:panelGrid columns="2" columnClasses="label, value">
-                        <h:outputText value="Firstname: " />
-                        <h:outputText value="#{userWizard.user.firstname}" styleClass="outputLabel"/>
- 
-                        <h:outputText value="Lastname: " />
-                        <h:outputText value="#{userWizard.user.lastname}" styleClass="outputLabel"/>
- 
-                        <h:outputText value="Age: " />
-                        <h:outputText value="#{userWizard.user.age}" styleClass="outputLabel"/>
-                    </h:panelGrid>
- 
-                    <h:panelGrid columns="2" columnClasses="label, value">
-                        <h:outputText value="Street: " />
-                        <h:outputText value="#{userWizard.user.street}" styleClass="outputLabel"/>
- 
-                        <h:outputText value="Postal: " />
-                        <h:outputText value="#{userWizard.user.postalCode}" styleClass="outputLabel"/>
- 
-                        <h:outputText value="City: " />
-                        <h:outputText value="#{userWizard.user.city}" styleClass="outputLabel"/>
-                    </h:panelGrid>
- 
-                    <h:panelGrid columns="2" columnClasses="label, value">
-                        <h:outputText value="Email: " />
-                        <h:outputText value="#{userWizard.user.email}" styleClass="outputLabel"/>
- 
-                        <h:outputText value="Phone " />
-                        <h:outputText value="#{userWizard.user.phone}" styleClass="outputLabel"/>
- 
-                        <h:outputText value="Info: " />
-                        <h:outputText value="#{userWizard.user.info}" styleClass="outputLabel"/>
- 
-                        <h:outputText />
-                        <h:outputText />
-                    </h:panelGrid>
-                </h:panelGrid>
- 
-                <p:commandButton value="Submit" action="#{userWizard.save}" update="growl" process="@this"/>
-            </p:panel>
-        </p:tab>
-    </p:wizard>
- 
-</h:form>
-		
 
+			<p:growl id="growl" sticky="true" showDetail="true" />
+
+			<h2 class="align-center">Ordem de Serviço - Pessoa Física</h2>
+
+			<p:panel styleClass="card no-border" toggleable="true"
+				toggleSpeed="300">
+
+				<h:form id="formDados">
+
+					<div style="text-align: left;"
+						class="ui-fluid #{layoutMB.flat ? 'ui-flat':''} ">
+						<p:panelGrid id="pgDados" columns="2"
+							columnClasses="ui-grid-col-3, ui-grid-col-3" layout="grid"
+							styleClass="ui-fluid card">
+
+							<p:outputLabel value="Entrada:" />
+							<p:calendar
+								value="#{funcionarioController.entity.dataNascimento}"
+								pattern="MM/dd/yyyy HH:mm" mask="true" locale="pt_BR" />
+
+							<p:outputLabel value="Nome" />
+							<p:inputText
+								value="#{ordemServicoController.entity.clienteFisico.nome}"
+								required="true" label="Nome" />
+
+							<p:outputLabel value="CPF:" />
+							<p:inputText
+								value="#{ordemServicoController.entity.clienteFisico.cpf}"
+								required="true" label="CPF" />
+
+							<p:outputLabel value="RG:" />
+							<p:inputText
+								value="#{ordemServicoController.entity.clienteFisico.rg}"
+								required="true" label="RG" />
+
+
+							<p:outputLabel value="Placa:" />
+							<p:inputText value="#{ordemServicoController.entity.carro.placa}" />
+
+							<p:outputLabel value="Marca:" />
+							<p:inputText value="#{ordemServicoController.entity.carro.marca}" />
+
+							<p:outputLabel value="Modelo:" />
+							<p:inputText
+								value="#{ordemServicoController.entity.carro.modelo}" />
+
+							<h:outputText value="Categoria: " />
+							<p:selectOneMenu
+								value="#{ordemServicoController.entity.carro.tipoVeiculo}">
+								<f:selectItem itemLabel="Selecione ...." itemValue="" />
+								<f:selectItems
+									value="#{ordemServicoController.vetorTipoVeiculo}"
+									var="tipoVel" itemLabel="#{tipoVel.label}"
+									itemValue="#{tipoVel}" />
+							</p:selectOneMenu>
+
+							<p:outputLabel for="advanced" value="Serviços:" />
+							<p:selectManyMenu id="advanced" 
+								value="#{ordemServicoController.listaServico}"
+								 var="t" filter="true"
+								filterMatchMode="contains" showCheckbox="true">
+								<f:selectItems value="#{servicoController.listaServico}" var="theme"
+									itemLabel="#{theme.nome}" itemValue="#{theme}" />
+
+								<p:column>
+									<h:outputText value="#{t.nome}" />
+								</p:column>
+								
+								<p:column>
+									<h:outputText value="#{t.valor}" />
+								</p:column>
+							</p:selectManyMenu>
+
+							 
+
+
+							<p:outputLabel value="Valor:" />
+							<p:inputText id="itValor"
+								value="#{ordemServicoController.entity.servico.valor}"
+								required="true" label="Valor" />
+
+							<h:outputText value="Forma de Pagamento: " />
+							<p:selectOneMenu
+								value="#{ordemServicoController.entity.pagamento.formaPagamento}">
+								<f:selectItem itemLabel="Selecione..." itemValue="" />
+								<f:selectItems
+									value="#{ordemServicoController.vetorFormaPagamento}" var="pag"
+									itemLabel="#{pag.label}" itemValue="#{pagl}" />
+							</p:selectOneMenu>
+
+							<p:commandButton value="CONCLUIR"
+								styleClass="btn-primary btn-block"
+								disabled="#{ordemServicoController.entity.id != null}"
+								actionListener="#{ordemServicoController.incluir}"
+								update="@this" process="@this" />
+
+						</p:panelGrid>
+					</div>
+				</h:form>
+
+				<p:dialog header="Serviços" appendTo="@(body)" widgetVar="dlg"
+					modal="true" height="400" width="660" closeOnEscape="true">
+
+					<p:panel styleClass="card no-border" toggleable="true"
+						toggleSpeed="300">
+						<h:form id="formDataTable">
+							<p:dataTable styleClass="box-primary" var="servico"
+								value="#{servicoController.listaServico}">
+								<f:facet name="header">
+									<h:outputText value="Lista de Serviços" />
+								</f:facet>
+
+								<p:column headerText="Nome">
+									<p:commandLink value="#{servico.nome}"
+										oncomplete="PF('dlg').hide();">
+										<f:ajax render="formDados" execute="@this" />
+										<f:setPropertyActionListener value="#{servico}"
+											target="#{ordemServicoController.entity}" />
+									</p:commandLink>
+								</p:column>
+
+								<p:column headerText="Descrição">
+									<h:outputText value="#{servico.descricao}" />
+								</p:column>
+
+								<p:column headerText="Valor">
+									<h:outputText value="#{servico.valor}" />
+								</p:column>
+							</p:dataTable>
+						</h:form>
+					</p:panel>
+				</p:dialog>
+
+			</p:panel>
 		</ui:define>
+
 	</ui:composition>
 </h:body>
 

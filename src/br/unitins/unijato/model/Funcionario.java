@@ -9,6 +9,7 @@ public class Funcionario extends PessoaFisica {
 
 	private String senha;
 	private String cargo;
+	private TipoUsuario tipoUsuario;
 
 	public String getSenha() {
 		return senha;
@@ -24,6 +25,14 @@ public class Funcionario extends PessoaFisica {
 
 	public void setCargo(String cargo) {
 		this.cargo = cargo;
+	}
+
+	public TipoUsuario getTipoUsuario() {
+		return tipoUsuario;
+	}
+
+	public void setTipoUsuario(TipoUsuario tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
 	}
 
 }

@@ -13,6 +13,7 @@
 		<class>br.unitins.unijato.model.Funcionario</class>
 		<class>br.unitins.unijato.model.OrdemServico</class>
 		<class>br.unitins.unijato.model.OrdemServico2</class>
+		<class>br.unitins.unijato.model.Pagamento</class>
 		<class>br.unitins.unijato.model.Pessoa</class>
 		<class>br.unitins.unijato.model.PessoaFisica</class>
 		<class>br.unitins.unijato.model.Servico</class>
