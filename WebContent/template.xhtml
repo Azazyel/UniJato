@@ -40,6 +40,7 @@
 				class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0"></div>
 
 			<!-- Navbar -->
+			<h:form>
 			<ul class="navbar-nav ml-auto ml-md-0">
 				<li class="nav-item dropdown no-arrow mx-1"><a
 					class="nav-link dropdown-toggle" href="#" id="alertsDropdown"
@@ -48,13 +49,16 @@
 				</a>
 					<div class="dropdown-menu dropdown-menu-right"
 						aria-labelledby="alertsDropdown">
-						<a class="dropdown-item" href="ajustes.php"><i
-							class="fas fa-cog fa-fw"></i> Ajustes da Conta</a>
+						<a class="dropdown-item" href="#"><i
+							class="fas fa-user fa-fw"></i>  <h:outputLabel value="#{templateController.usuarioLogado.nome}"/>  </a>
 						<div class="dropdown-divider"></div>
-						<a class="dropdown-item" href="sair.php"><i
-							class="fas fa-power-off fa-fw"></i> Sair</a>
+						
+						<h:commandLink value=" Sair " styleClass="dropdown-item" 
+						action="#{templateController.encerrarSessao}"		/>
+						
 					</div></li>
 			</ul>
+			</h:form>
 
 		</nav>
 		<div id="wrapper">

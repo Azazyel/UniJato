@@ -28,8 +28,9 @@ public class LoginController extends DefaultController{
 		}
 		// setando o usuario na sessao
 		setUsuarioLogado(usuarioValidado);
+		Util.redirect("/UniJato/pages/entrada.xhtml");
+		return "/UniJato/pages/entrada.xhtml";
 		
-		return "entrada.xhtml";
 	}
 
 	public Funcionario getFuncionario() {

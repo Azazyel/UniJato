@@ -6,6 +6,7 @@ import java.util.List;
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
 
+import br.unitins.unijato.application.Util;
 import br.unitins.unijato.model.Funcionario;
 import br.unitins.unijato.model.TipoUsuario;
 import br.unitins.unijato.repository.FuncionarioRepository;
@@ -25,6 +26,22 @@ public class FuncionarioController extends Controller<Funcionario> {
 
 	private List<Funcionario> listaFuncionario = null;
 
+	@Override
+	public Funcionario incluir() {
+		String senhaEncriptada = Util.encrypt(getEntity().getSenha());
+		getEntity().setSenha(senhaEncriptada);
+		
+		return super.incluir();
+	}
+	
+	@Override
+	public Funcionario alterar() {
+		String senhaEncriptada = Util.encrypt(getEntity().getSenha());
+		getEntity().setSenha(senhaEncriptada);
+		
+		return super.alterar();
+	}
+	
 	public void limpar() {
 		setEntity(null);
 		listaFuncionario = null;

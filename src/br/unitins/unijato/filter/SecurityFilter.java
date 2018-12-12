@@ -23,36 +23,36 @@ public class SecurityFilter implements Filter{
 			throws IOException, ServletException {
 		
 		//autorizando tudo
-		chain.doFilter(request, response);
-		return;
+//		chain.doFilter(request, response);
+//		return;
 		
 		
 		
-//		HttpServletRequest servletRequest = (HttpServletRequest) request;
-//		
-//		// imprime o endereco da pagina solicitada
-//		System.out.println(servletRequest.getRequestURI());
-//		
-//		
-//		HttpSession session = servletRequest.getSession(false);
-//		Funcionario fusuario = null;
-//		
-//		if (session != null)
-//			fusuario = (Funcionario) session.getAttribute("usuarioLogado");
-//													  
-//		if (fusuario == null) {
-//			((HttpServletResponse) response).sendRedirect("/UniJato/login.xhtml"); 
-//		} else {
-//			String endereco = servletRequest.getRequestURI();
-//			for (String pagina : fusuario.getTipoUsuario().getPages()) {
-//				if (endereco.contains(pagina)) {
-//					chain.doFilter(request, response);
-//					return;
-//				}
-//			}
-//			
-//			((HttpServletResponse) response).sendRedirect("/UniJato/sempermissao.xhtml");
-//		}
+		HttpServletRequest servletRequest = (HttpServletRequest) request;
+		
+		// imprime o endereco da pagina solicitada
+		System.out.println(servletRequest.getRequestURI());
+		
+		
+		HttpSession session = servletRequest.getSession(false);
+		Funcionario fusuario = null;
+		
+		if (session != null)
+			fusuario = (Funcionario) session.getAttribute("usuarioLogado");
+													  
+		if (fusuario == null) {
+			((HttpServletResponse) response).sendRedirect("/UniJato/login.xhtml"); 
+		} else {
+			String endereco = servletRequest.getRequestURI();
+			for (String pagina : fusuario.getTipoUsuario().getPages()) {
+				if (endereco.contains(pagina)) {
+					chain.doFilter(request, response);
+					return;
+				}
+			}
+			
+			((HttpServletResponse) response).sendRedirect("/UniJato/sempermissao.xhtml");
+		}
 	}
 	
 	@Override
