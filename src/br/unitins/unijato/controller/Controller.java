@@ -1,13 +1,14 @@
 package br.unitins.unijato.controller;
+
 import javax.persistence.EntityManager;
 import javax.persistence.OptimisticLockException;
 
+import br.unitins.unijato.application.Util;
+import br.unitins.unijato.application.ValidationException;
 import br.unitins.unijato.factory.JPAFactory;
 import br.unitins.unijato.model.DefaultEntity;
 import br.unitins.unijato.repository.Repository;
 import br.unitins.unijato.validation.Validation;
-import br.unitins.unijato.application.Util;
-import br.unitins.unijato.application.ValidationException;
 
 public abstract class Controller<T extends DefaultEntity<? super T>> extends DefaultController {
 	

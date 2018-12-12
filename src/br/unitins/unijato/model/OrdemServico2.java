@@ -9,25 +9,33 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
-public class OrdemServico extends DefaultEntity<OrdemServico>{
+public class OrdemServico2 extends DefaultEntity<OrdemServico2> {
 
 	private static final long serialVersionUID = 1832053982196339845L;
-	
+
+	private Integer codigo;
 	private String status;
-	
+
 	@Temporal(TemporalType.DATE)
 	private Date dataEntrada;
-	
+
 	@Temporal(TemporalType.DATE)
 	private Date dataSaida;
-	
+
 	private double total;
 	private double desconto;
-	
-	@ManyToOne
-	@JoinColumn(name="idClienteFisico")
-	private ClienteFisico clienteFisico;
 
+	@ManyToOne
+	@JoinColumn(name = "idClienteJuridico")
+	private ClienteFisico clienteJuridico;
+
+	public Integer getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(Integer codigo) {
+		this.codigo = codigo;
+	}
 
 	public String getStatus() {
 		return status;
@@ -69,15 +77,12 @@ public class OrdemServico extends DefaultEntity<OrdemServico>{
 		this.desconto = desconto;
 	}
 
-	public ClienteFisico getClienteFisico() {
-		return clienteFisico;
+	public ClienteFisico getClienteJuridico() {
+		return clienteJuridico;
 	}
 
-	public void setClienteFisico(ClienteFisico clienteFisico) {
-		this.clienteFisico = clienteFisico;
+	public void setClienteJuridico(ClienteFisico clienteJuridico) {
+		this.clienteJuridico = clienteJuridico;
 	}
-	
-	
-
 
 }

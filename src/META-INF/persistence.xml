@@ -10,14 +10,13 @@
 		<class>br.unitins.unijato.model.ClienteFisico</class>
 		<class>br.unitins.unijato.model.ClienteJuridico</class>
 		<class>br.unitins.unijato.model.DefaultEntity</class>
-		<class>br.unitins.unijato.model.Entrada</class>
 		<class>br.unitins.unijato.model.Funcionario</class>
 		<class>br.unitins.unijato.model.OrdemServico</class>
+		<class>br.unitins.unijato.model.OrdemServico2</class>
 		<class>br.unitins.unijato.model.Pessoa</class>
 		<class>br.unitins.unijato.model.PessoaFisica</class>
 		<class>br.unitins.unijato.model.Servico</class>
 		<class>br.unitins.unijato.model.Telefone</class>
-		<class>br.unitins.unijato.model.Usuario</class>
 		
 		<properties>
 			<property name="javax.persistence.jdbc.url"

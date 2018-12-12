@@ -3,7 +3,7 @@ package br.unitins.unijato.controller;
 import java.io.Serializable;
 
 import br.unitins.unijato.application.Session;
-import br.unitins.unijato.model.Usuario;
+import br.unitins.unijato.model.Funcionario;
 
 public class DefaultController implements Serializable{
 	
@@ -11,12 +11,12 @@ public class DefaultController implements Serializable{
 	
 	private static final String userKey = "usuarioLogado";
 	
-	public Usuario getUsuarioLogado() {
-		return (Usuario) Session.getInstance().getAttribute(userKey);
+	public Funcionario getUsuarioLogado() {
+		return (Funcionario) Session.getInstance().getAttribute(userKey);
 	}
 
-	public void setUsuarioLogado(Usuario usuario) {
-		Session.getInstance().setAttribute(userKey, usuario);
+	public void setUsuarioLogado(Funcionario fusuario) {
+		Session.getInstance().setAttribute(userKey, fusuario);
 	}
 	
 	public void encerrarSessao() {

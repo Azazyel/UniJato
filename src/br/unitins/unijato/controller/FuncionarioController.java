@@ -1,17 +1,15 @@
 package br.unitins.unijato.controller;
 
+import java.util.ArrayList;
 import java.util.List;
-
 import javax.faces.view.ViewScoped;
 import javax.inject.Named;
-
 import br.unitins.unijato.model.Funcionario;
 import br.unitins.unijato.repository.FuncionarioRepository;
-import br.unitins.unijato.validation.Validation;
 
 @Named
 @ViewScoped
-public class FuncionarioController extends Controller<Funcionario>{
+public class FuncionarioController extends Controller<Funcionario> {
 
 	public FuncionarioController() {
 		super(null);
@@ -20,31 +18,31 @@ public class FuncionarioController extends Controller<Funcionario>{
 
 	private static final long serialVersionUID = 4961007223933510368L;
 
-	private List<Funcionario> listaFuncionario = null;
 	private String pesquisa;
+
+	private List<Funcionario> listaFuncionario = null;
 
 	public void limpar() {
 		setEntity(null);
 		listaFuncionario = null;
 	}
 
-	public List<Funcionario> getListaFuncionario() {
+	public void pesquisar() {
 		FuncionarioRepository repository = new FuncionarioRepository(getEntityManager());
+		listaFuncionario = repository.getFuncionarios(pesquisa);
+	}
+
+	public List<Funcionario> getListaFuncionario() {
 		if (listaFuncionario == null)
-			listaFuncionario = repository.getFuncionario();
+			listaFuncionario = new ArrayList<Funcionario>();
 		return listaFuncionario;
 	}
 
-	public void pesquisarCPF() {
-		FuncionarioRepository repository = new FuncionarioRepository(getEntityManager());
-		listaFuncionario = repository.getFuncionarioByCpf(getPesquisa());
-		Funcionario busca = listaFuncionario.get(0);
-		setEntity(busca);
-	}
-
+	@Override
 	public Funcionario getEntity() {
-		if (entity == null)
+		if (entity == null) {
 			entity = new Funcionario();
+		}
 		return entity;
 	}
 

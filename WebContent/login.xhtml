@@ -1,63 +1,65 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:adm="http://github.com/adminfaces"
-      xmlns:p="http://primefaces.org/ui">
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:adm="http://github.com/adminfaces"
+	xmlns:p="http://primefaces.org/ui">
 
-    <h:head>
-  
-    </h:head>
+<h:head>
+	<title>Unijato</title>
+</h:head>
 
-    <h:body styleClass="hold-transition login-page">
-        <p:growl autoUpdate="true" sticky="true"/>
-        
-
-        <div class="login-box" style="border-color: black">
-            <div class="login-logo">
-                <p:link href="index.xhtml"><b>Tópicos em Programação II</b></p:link>
-            </div>
-            <!-- /.login-logo -->
-            <div class="box login-box-body">
-                <h:form>
-                   	<p:messages closable="true" />
-	                <p:panelGrid columns="1" style="text-align: center;"
-								columnClasses="ui-grid-col-12"
-								layout="grid" styleClass="ui-fluid  ">
-	                    <p class="login-box-msg">Entre com os dados para iniciar a sessão</p>
-	                 
-	                    <p:inputText value="#{loginController.usuario.email}" type="email" styleClass="form-control" placeholder="Email"
-	                                     required="true" autocomplete="off"
-	                                     requiredMessage="O email é obrigatório."/>
-	                    <p:inputText value="#{loginController.usuario.senha}" type="password" styleClass="form-control"
-	                                     placeholder="Senha" required="true" autocomplete="off"
-	                                     requiredMessage="A senha é obrigatória."/>
-							
-                		<p:commandButton 
-                			styleClass="btn-primary btn-block" 
-                			value="Entrar" 
-                			action="#{loginController.entrar}"
-                			process="@form"
-                			update="@form"/>
-						
-						<a href="#">Esqueci a senha</a><br/>							
-					</p:panelGrid>
-                    
-                </h:form>
-				
+<h:body styleClass="hold-transition login-page">
+	<p:growl autoUpdate="true" sticky="true" />
 
 
-                
+	<div class="login-box" style="border-color: black">
+		<div class="login-logo">
+			<p:link href="login.xhtml">
+				<b>Unijato - Sistma para Controle de Lava Jato</b>
+			</p:link>
+		</div>
+		<!-- /.login-logo -->
+		<div class="box login-box-body">
+			<h:form>
+				<p:messages closable="true" />
+				<p:panelGrid columns="1" style="text-align: center;"
+					columnClasses="ui-grid-col-12" layout="grid"
+					styleClass="ui-fluid  ">
+					<p class="login-box-msg">Entre com os dados para iniciar a
+						sessão</p>
 
-            </div>
-            <!-- /.login-box-body -->
-        </div>
+					<p:inputText value="#{loginController.funcionario.cpf}" type="text"
+						styleClass="form-control" placeholder="CPF" required="true"
+						autocomplete="off" requiredMessage="O CPF é obrigatório." />
 
-        
-        <h:outputScript library="js" name="prism.js"  target="head"/>
-        <h:outputScript library="js" name="admintemplate.js"  target="head"/>
-        <adm:ripple/>
+					<p:inputText value="#{loginController.funcionario.senha}"
+						type="password" styleClass="form-control" placeholder="Senha"
+						required="true" autocomplete="off"
+						requiredMessage="A senha é obrigatória." />
+
+					<p:commandButton styleClass="btn-primary btn-block" value="Entrar"
+						action="#{loginController.entrar}" process="@form" update="@form" />
+
+					<a href="#">Esqueci a senha</a>
+					<br />
+				</p:panelGrid>
+
+			</h:form>
 
 
-    </h:body>
+
+
+
+		</div>
+		<!-- /.login-box-body -->
+	</div>
+
+
+	<h:outputScript library="js" name="prism.js" target="head" />
+	<h:outputScript library="js" name="admintemplate.js" target="head" />
+	<adm:ripple />
+
+
+</h:body>
 </html>

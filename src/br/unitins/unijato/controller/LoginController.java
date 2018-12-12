@@ -5,8 +5,8 @@ import javax.inject.Named;
 
 import br.unitins.unijato.application.Util;
 import br.unitins.unijato.factory.JPAFactory;
-import br.unitins.unijato.model.Usuario;
-import br.unitins.unijato.repository.UsuarioRepository;
+import br.unitins.unijato.model.Funcionario;
+import br.unitins.unijato.repository.FuncionarioRepository;
 
 @Named
 @RequestScoped
@@ -14,32 +14,32 @@ public class LoginController extends DefaultController{
 	
 	private static final long serialVersionUID = 1627534002529974345L;
 	
-private Usuario usuario;
+	private Funcionario fusuario;
 	
 	public String entrar() {
-		UsuarioRepository repository = 
-				new UsuarioRepository(JPAFactory.getEntityManager());
-		Usuario usuarioValidado = repository
-				.getUsuario(getUsuario().getEmail(), getUsuario().getSenha());
+		FuncionarioRepository repository = 
+				new FuncionarioRepository(JPAFactory.getEntityManager());
+		Funcionario usuarioValidado = repository
+				.getFuncionarioLogin(getFuncionario().getCpf(), getFuncionario().getSenha());
 		
 		if (usuarioValidado == null) {
-			Util.addErroMessage("Usuário ou Senha inválido.");
+			Util.addErroMessage("CPF ou senha incorreto.");
 			return null;
 		}
 		// setando o usuario na sessao
 		setUsuarioLogado(usuarioValidado);
 		
-		return "cadastropessoa4.xhtml";
+		return "entrada.xhtml";
 	}
 
-	public Usuario getUsuario() {
-		if (usuario == null)
-			usuario = new Usuario();
-		return usuario;
+	public Funcionario getFuncionario() {
+		if (fusuario == null)
+			fusuario = new Funcionario();
+		return fusuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setFuncionario(Funcionario fusuario) {
+		this.fusuario = fusuario;
 	}
 	
 }

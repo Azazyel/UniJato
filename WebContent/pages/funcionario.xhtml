@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<title>UniJato</title>
+
+</h:head>
+
+<h:body>
+	<ui:composition template="../template.xhtml">
+		<ui:define name="conteudo">
+
+			<p:ajaxStatus onstart="PF('statusDialog').show()"
+				onsuccess="PF('statusDialog').hide()" />
+
+			<p:dialog widgetVar="statusDialog" modal="true" draggable="false"
+				closable="false" resizable="false" showHeader="false">
+				<p:graphicImage name="/images/loading.gif" />
+			</p:dialog>
+			<div style="position: absolute; top: 100px; left: 80%">
+				<p:growl>
+					<p:autoUpdate disabled="false" />
+				</p:growl>
+			</div>
+			<h2 class="align-center">Funcionário</h2>
+			<div class="ui-g-12">
+				<p:panel styleClass="card no-border" toggleable="true"
+					toggleSpeed="300">
+
+					<h:form id="formDados">
+
+						<div style="text-align: left;"
+							class="ui-fluid #{layoutMB.flat ? 'ui-flat':''} ">
+							<p:panelGrid id="pgDados" columns="2"
+								columnClasses="ui-grid-col-6, ui-grid-col-6" layout="grid"
+								styleClass="ui-fluid card">
+
+								<h:panelGroup>
+									<p:commandLink for="itNome" value="Nome:"
+										onclick="PF('dlg').show();" process="@this"
+										style="color:blue; text-decoration: underline;" />
+									<p:inputText id="itNome"
+										value="#{funcionarioController.entity.nome}" required="true">
+										<p:focus for="itNome" />
+									</p:inputText>
+								</h:panelGroup>
+
+								<h:panelGroup>
+									<p:outputLabel value="CPF:" />
+									<p:inputText id="itCpf"
+										value="#{funcionarioController.entity.cpf}" />
+								</h:panelGroup>
+
+								<h:panelGroup>
+									<p:outputLabel value="RG:" />
+									<p:inputText id="itRg"
+										value="#{funcionarioController.entity.rg}" />
+								</h:panelGroup>
+
+								<h:panelGroup>
+									<p:outputLabel value="Data de Nascimento:" />
+									<p:calendar
+										value="#{funcionarioController.entity.dataNascimento}"
+										pattern="dd/MM/yyyy" mask="true" locale="pt_BR" />
+								</h:panelGroup>
+
+								<h:panelGroup>
+									<p:outputLabel value="Cargo" />
+									<p:inputText value="#{funcionarioController.entity.cargo}">
+
+									</p:inputText>
+								</h:panelGroup>
+
+
+								<h:panelGroup>
+									<p:outputLabel value="Endereco:" />
+									<p:inputText value="#{funcionarioController.entity.endereco}">
+
+									</p:inputText>
+								</h:panelGroup>
+
+								<h:panelGroup>
+									<p:outputLabel value="E-mail:" />
+									<p:inputText id="itEmail"
+										value="#{funcionarioController.entity.email}" />
+								</h:panelGroup>
+
+								<h:panelGroup>
+									<p:outputLabel value="Senha:" />
+									<p:inputText id="itSenha" type="password"
+										value="#{funcionarioController.entity.senha}" />
+								</h:panelGroup>
+
+
+
+
+
+								<p:spacer />
+							</p:panelGrid>
+						</div>
+
+
+						<p:spacer />
+
+						<p:panelGrid columns="4" style="text-align: center;"
+							columnClasses="ui-grid-col-2,ui-grid-col-2,ui-grid-col-2,ui-grid-col-2"
+							layout="grid" styleClass="ui-fluid  ">
+
+							<p:commandButton value="Incluir"
+								styleClass="btn-primary btn-block"
+								disabled="#{funcionarioController.entity.id != null}"
+								actionListener="#{funcionarioController.incluir}"
+								update="@form formDataTable" process="@this pgDados" />
+
+							<p:commandButton value="Alterar"
+								styleClass="btn-primary btn-block"
+								disabled="#{funcionarioController.entity.id == null}"
+								actionListener="#{funcionarioController.alterar}"
+								update="@form formDataTable" process="@this pgDados" />
+
+							<p:commandButton value="Excluir"
+								styleClass="btn-primary btn-block"
+								disabled="#{funcionarioController.entity.id == null}"
+								actionListener="#{funcionarioController.remover}"
+								update="@form formDataTable" process="@this pgDados">
+								<p:confirm header="Confirmação"
+									message="Deseja realmente excluir?" icon="ui-icon-alert" />
+							</p:commandButton>
+
+							<p:commandButton value="Limpar"
+								styleClass="btn-primary btn-block"
+								actionListener="#{funcionarioController.limpar}"
+								update="@form formDataTable" process="@this">
+								<p:resetInput target="@form" />
+							</p:commandButton>
+						</p:panelGrid>
+
+
+
+					</h:form>
+
+				</p:panel>
+				<p:spacer />
+
+				<p:dialog header="Pesquisa de Funcionários" appendTo="@(body)"
+					widgetVar="dlg" modal="true" height="400" closeOnEscape="true">
+					<h:form>
+						<p:inputText id="itPesquisa"
+							value="#{funcionarioController.pesquisa}" />
+						<p:commandButton value="Pesquisar"
+							actionListener="#{funcionarioController.pesquisar}"
+							process="@this itPesquisa" update="formDataTable" />
+					</h:form>
+					<p:panel styleClass="card no-border" toggleable="true"
+						toggleSpeed="300">
+						<h:form id="formDataTable">
+							<p:dataTable styleClass="box-primary" var="pessoa"
+								value="#{funcionarioController.listaFuncionario}">
+								<f:facet name="header">
+									<h:outputText value="Lista de Funcionários Cadastradas" />
+								</f:facet>
+								<p:column headerText="CPF">
+									<h:outputText value="#{pessoa.cpf}" />
+								</p:column>
+
+								<p:column headerText="Nome">
+									<p:commandLink value="#{pessoa.nome}"
+										oncomplete="PF('dlg').hide();">
+										<f:ajax render="formDados" execute="@this" />
+										<f:setPropertyActionListener value="#{pessoa}"
+											target="#{funcionarioController.entity}" />
+									</p:commandLink>
+								</p:column>
+
+								<p:column headerText="Data de Nascimento">
+									<h:outputText value="#{pessoa.dataNascimento}">
+										<f:convertDateTime pattern="dd/MM/yyyy hh:mm:ss"
+											locale="pt_BR" />
+									</h:outputText>
+								</p:column>
+
+								<p:column headerText="Email">
+									<h:outputText value="#{pessoa.email}" />
+								</p:column>
+							</p:dataTable>
+						</h:form>
+					</p:panel>
+				</p:dialog>
+
+			</div>
+
+		</ui:define>
+	</ui:composition>
+</h:body>
+
+</html>
