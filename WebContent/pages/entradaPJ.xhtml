@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<title>UniJato</title>
+
+</h:head>
+
+<h:body>
+	<ui:composition template="/template.xhtml">
+		<ui:define name="conteudo">
+
+
+			<p:growl id="growl" sticky="true" showDetail="true" />
+
+			<h2 class="align-center">Ordem de Serviço - Pessoa Juridica</h2>
+
+			<p:panel styleClass="card no-border" toggleable="true"
+				toggleSpeed="300">
+
+				<h:form id="formDados">
+
+					<div style="text-align: left;"
+						class="ui-fluid #{layoutMB.flat ? 'ui-flat':''} ">
+						<p:panelGrid id="pgDados" columns="2"
+							columnClasses="ui-grid-col-3, ui-grid-col-3" layout="grid"
+							styleClass="ui-fluid card">
+
+							<p:outputLabel value="Entrada:" />
+							<p:calendar
+								value="#{funcionarioController.entity.dataNascimento}"
+								pattern="MM/dd/yyyy HH:mm" mask="true" locale="pt_BR" />
+
+							<p:outputLabel value="Nome" />
+							<p:inputText
+								value="#{ordemServicoController2.entity.clienteFisico.nomefantasia}"
+								required="true" label="Nome Fantasa" />
+
+							<p:outputLabel value="CNPJ:" />
+							<p:inputText
+								value="#{ordemServicoController2.entity.clienteFisico.CNPJ}"
+								required="true" label="CPF" />
+
+							<p:outputLabel value="Placa:" />
+							<p:inputText value="#{ordemServicoController2.entity.carro.placa}" />
+
+							<p:outputLabel value="Marca:" />
+							<p:inputText value="#{ordemServicoController2.entity.carro.marca}" />
+
+							<p:outputLabel value="Modelo:" />
+							<p:inputText
+								value="#{ordemServicoController2.entity.carro.modelo}" />
+
+							<h:outputText value="Categoria: " />
+							<p:selectOneMenu
+								value="#{ordemServicoController2.entity.carro.tipoVeiculo}">
+								<f:selectItem itemLabel="Selecione ...." itemValue="" />
+								<f:selectItems
+									value="#{ordemServicoController2.vetorTipoVeiculo}"
+									var="tipoVel" itemLabel="#{tipoVel.label}"
+									itemValue="#{tipoVel}" />
+							</p:selectOneMenu>
+
+							<p:outputLabel for="advanced" value="Serviços:" />
+							<p:selectManyMenu id="advanced" 
+								value="#{ordemServicoController2.listaServico}"
+								 var="t" filter="true"
+								filterMatchMode="contains" showCheckbox="true">
+								<f:selectItems value="#{servicoController2.listaServico}" var="theme"
+									itemLabel="#{theme.nome}" itemValue="#{theme}" />
+
+								<p:column>
+									<h:outputText value="#{t.nome}" />
+								</p:column>
+								
+								<p:column>
+									<h:outputText value="#{t.valor}" />
+								</p:column>
+							</p:selectManyMenu>
+
+
+							<p:outputLabel value="Valor:" />
+							<p:inputText id="itValor"
+								value="#{ordemServicoController2.entity.servico.valor}"
+								required="true" label="Valor" />
+
+							<h:outputText value="Forma de Pagamento: " />
+							<p:selectOneMenu
+								value="#{ordemServicoController2.entity.pagamento.formaPagamento}">
+								<f:selectItem itemLabel="Selecione..." itemValue="" />
+								<f:selectItems
+									value="#{ordemServicoController2.vetorFormaPagamento}" var="pag"
+									itemLabel="#{pag.label}" itemValue="#{pagl}" />
+							</p:selectOneMenu>
+
+							<p:commandButton value="CONCLUIR"
+								styleClass="btn-primary btn-block"
+								disabled="#{ordemServicoController2.entity.id != null}"
+								actionListener="#{ordemServicoController2.incluir}"
+								update="@this" process="@this" />
+
+						</p:panelGrid>
+					</div>
+				</h:form>
+
+		
+			</p:panel>
+		</ui:define>
+
+	</ui:composition>
+</h:body>
+
+</html>
